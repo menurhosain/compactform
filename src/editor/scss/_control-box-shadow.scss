@@ -1,0 +1,44 @@
+.fcf7b-bxsh {
+  position: relative;
+
+  &-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 8px;
+    border: 1px solid var(--fcf7b-border);
+    border-radius: 7px;
+    background: var(--fcf7b-panel-2);
+    color: var(--fcf7b-text);
+    cursor: pointer;
+
+    i {
+      font-size: 13px;
+      color: var(--fcf7b-muted);
+    }
+    &.is-set {
+      border-color: var(--fcf7b-accent);
+    }
+  }
+
+  &-pop {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 8px);
+    z-index: 50;
+    width: 252px;
+    max-height: 380px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px;
+    border: 1px solid var(--fcf7b-border);
+    border-radius: 10px;
+    background: var(--fcf7b-panel);
+    box-shadow: var(--fcf7b-shadow);
+    .fcf7b-color-pop {
+      width: 216px;
+    }
+  }
+}

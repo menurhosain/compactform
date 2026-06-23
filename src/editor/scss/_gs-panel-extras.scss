@@ -1,0 +1,168 @@
+.fcf7b-gspanel-lead {
+  margin: 0 0 10px;
+}
+
+.fcf7b-gspanel-warn {
+  color: var(--fcf7b-danger);
+}
+
+.fcf7b-gspanel-tabs {
+  display: flex;
+  gap: 3px;
+  margin: 0 0 18px;
+  padding: 3px;
+  border-radius: 8px;
+  background: var(--fcf7b-panel-2);
+}
+
+.fcf7b-gspanel-tab {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 6px 10px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--fcf7b-muted);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--fcf7b-text);
+  }
+
+  &.is-active {
+    background: var(--fcf7b-panel);
+    color: var(--fcf7b-text);
+    box-shadow: 0 1px 2px rgb(0 0 0 / 20%);
+  }
+}
+
+.fcf7b-gspanel-pinned {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--fcf7b-border);
+}
+
+.fcf7b-gspanel-more {
+  margin-top: 10px;
+
+  summary {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--fcf7b-muted);
+    cursor: pointer;
+
+    &:hover {
+      color: var(--fcf7b-accent);
+    }
+  }
+}
+
+.fcf7b-gspanel-textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--fcf7b-border);
+  border-radius: 6px;
+  background: var(--fcf7b-panel-2);
+  color: var(--fcf7b-text);
+  font-size: 12px;
+  line-height: 1.6;
+  resize: vertical;
+}
+
+.fcf7b-gspanel-testrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+
+  button[disabled] {
+    opacity: 0.5;
+    cursor: default;
+
+    &:hover {
+      border-color: var(--fcf7b-border);
+      color: var(--fcf7b-muted);
+    }
+  }
+}
+
+.fcf7b-gspanel-testmsg {
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--fcf7b-muted);
+
+  &.is-ok {
+    color: var(--fcf7b-accent);
+  }
+  &.is-fail {
+    color: var(--fcf7b-danger);
+  }
+}
+
+.fcf7b-gspanel-preview {
+  margin: 0;
+  padding: 12px;
+  max-height: 260px;
+  overflow: auto;
+  border: 1px solid var(--fcf7b-border);
+  border-radius: 6px;
+  background: var(--fcf7b-panel-2);
+  color: var(--fcf7b-text);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 11px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.fcf7b-gspanel-devsw {
+  display: inline-flex;
+  gap: 2px;
+  padding: 2px;
+  border: 1px solid var(--fcf7b-border);
+  border-radius: 6px;
+  background: var(--fcf7b-panel-2);
+
+  button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 22px;
+    padding: 0;
+    border: 0;
+    border-radius: 4px;
+    background: transparent;
+    color: var(--fcf7b-muted);
+    font-size: 13px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    color: var(--fcf7b-text);
+  }
+
+  button.is-active {
+    background: var(--fcf7b-accent);
+    color: #fff;
+  }
+}
+
+.fcf7b-gspanel-reset {
+  margin-top: 10px;
+  width: 100%;
+  padding: 6px 10px;
+  border: 1px solid var(--fcf7b-border);
+  border-radius: 6px;
+  background: var(--fcf7b-panel-2);
+  color: var(--fcf7b-muted);
+  font-size: 11px;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--fcf7b-danger);
+    border-color: var(--fcf7b-danger);
+  }
+}

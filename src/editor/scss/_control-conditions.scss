@@ -1,0 +1,46 @@
+// --- Conditional logic control ---------------------------------------------
+.fcf7b-ctl-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+
+  > .fcf7b-ctl-rowlabel {
+    flex: 0 0 auto;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--fcf7b-text);
+  }
+
+  > select,
+  > input,
+  > .fcf7b-select {
+    flex: 0 0 160px;
+    min-width: 0;
+    max-width: 160px;
+    line-height: 1;
+    min-height: auto;
+    padding: 9px;
+  }
+
+  > .fcf7b-select {
+    padding: 0;
+  } // padding lives on its inner trigger
+}
+
+.fcf7b-cond-ctl {
+  .fcf7b-cond-body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+    border: 1px dashed var(--fcf7b-border);
+    border-radius: 8px;
+  }
+
+  .fcf7b-cond-hint {
+    margin: 0;
+    font-size: 11px;
+    color: var(--fcf7b-muted);
+  }
+}

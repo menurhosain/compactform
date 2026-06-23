@@ -1,0 +1,64 @@
+// --- Color control ---------------------------------------------------------
+.fcf7b-color {
+  position: relative;
+
+  &-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 8px;
+    border: 1px solid var(--fcf7b-border);
+    border-radius: 7px;
+    background: var(--fcf7b-panel-2);
+    color: var(--fcf7b-text);
+    cursor: pointer;
+    font-size: 12px;
+
+    &.is-open {
+      border-color: var(--fcf7b-accent);
+    }
+  }
+
+  &-swatch {
+    width: 22px;
+    height: 22px;
+    flex: 0 0 auto;
+    border-radius: 5px;
+    border: 1px solid var(--fcf7b-border);
+
+    &.is-empty {
+      background-image: linear-gradient(45deg, #c4c4c4 25%, transparent 25%),
+        linear-gradient(-45deg, #c4c4c4 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #c4c4c4 75%),
+        linear-gradient(-45deg, transparent 75%, #c4c4c4 75%);
+      background-size: 8px 8px;
+      background-position:
+        0 0,
+        0 4px,
+        4px -4px,
+        -4px 0;
+    }
+  }
+
+  &-value {
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    font-size: 11px;
+    min-width: 54px;
+    text-align: left;
+  }
+
+  // Popover picker — themed to the builder (light + dark).
+  &-pop {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 8px);
+    z-index: 50;
+    width: 236px;
+    padding: 12px;
+    border: 1px solid var(--fcf7b-border);
+    border-radius: 10px;
+    background: var(--fcf7b-panel);
+    box-shadow: var(--fcf7b-shadow);
+  }
+}

@@ -1,0 +1,75 @@
+// --- Typography control (inline trigger + popover) --------------------------
+.fcf7b-typo {
+  position: relative;
+  .fcf7b-ctl-row {
+    > select,
+    > input,
+    > .fcf7b-select {
+      max-width: 130px;
+      flex: 0 0 130px;
+    }
+  }
+  &-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 8px;
+    border: 1px solid var(--fcf7b-border);
+    border-radius: 7px;
+    background: var(--fcf7b-panel-2);
+    color: var(--fcf7b-muted);
+    cursor: pointer;
+    font-size: 13px;
+
+    &.is-open,
+    &.is-set {
+      border-color: var(--fcf7b-accent);
+      color: var(--fcf7b-accent);
+    }
+  }
+
+  &-aa {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--fcf7b-text);
+  }
+
+  &-pop {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 8px);
+    z-index: 50;
+    width: 252px;
+    max-height: 380px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px;
+    border: 1px solid var(--fcf7b-border);
+    border-radius: 10px;
+    background: var(--fcf7b-panel);
+    box-shadow: var(--fcf7b-shadow);
+
+    // Sliders inside the popover sit flush.
+    .fcf7b-slider {
+      margin-bottom: 0;
+    }
+  }
+
+  &-reset {
+    border: 1px solid var(--fcf7b-border);
+    border-radius: 6px;
+    background: var(--fcf7b-panel-2);
+    color: var(--fcf7b-muted);
+    font-size: 11px;
+    padding: 5px 10px;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--fcf7b-danger);
+      border-color: var(--fcf7b-danger);
+    }
+  }
+}

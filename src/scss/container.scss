@@ -1,0 +1,17 @@
+.fcf7-container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	column-gap: 20px;
+	row-gap: 20px;
+	padding: 10px;
+}
+
+.fcf7-container > .fcf7b-field-wrap {
+	flex: 1 1 0;
+	min-width: 0;
+}
+
+.fcf7-container > .fcf7b-field-wrap > .fcf7-container {
+	height: 100%;
+}

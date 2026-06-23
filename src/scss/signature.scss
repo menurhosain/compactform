@@ -1,0 +1,74 @@
+
+
+.wpcf7-form-control {
+	&.fcf7-signature-frame {
+		display: inline-flex !important;
+		flex-direction: column;
+		gap: 8px;
+		width: 100%;
+		max-width: 100%;
+		height: auto;
+		min-height: 0;
+		padding: 10px;
+		border: 1px solid #d5d8dc;
+		border-radius: 6px;
+		background-color: #fff;
+		line-height: normal;
+
+		&.wpcf7-not-valid {
+			border-color: #e6194b;
+		}
+	}
+}
+
+.fcf7-signature-pad {
+	position: relative;
+	display: block;
+	width: 100%;
+	line-height: 0;
+	canvas {
+		display: block;
+		width: 100%;
+		height: 120px;
+		max-width: 100%;
+		border: 1px dashed #c3c8cd;
+		border-radius: 4px;
+		cursor: crosshair;
+		touch-action: none;
+	}
+}
+
+.fcf7-signature-actions {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.fcf7-signature-clear {
+	appearance: none;
+	flex: none;
+	margin: 0;
+	border: 1px solid #d5d8dc;
+	background: #f6f7f7;
+	color: inherit;
+	border-radius: 4px;
+	padding: 4px 12px;
+	width: auto;
+	height: auto;
+	min-height: 0;
+	font-size: 12px;
+	line-height: 1.4;
+	transition: all 0.3s;
+	cursor: pointer;
+
+	&:hover {
+		background: #eceef0;
+		color: inherit;
+	}
+}
+
+.fcf7-signature-hint {
+	font-size: 12px;
+	line-height: 1.4;
+	color: #7b8794;
+}

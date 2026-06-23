@@ -1,0 +1,35 @@
+
+@import "../scss/repeater-shared";
+
+.fcf7-repeater {
+	.fcf7-repeater-row {
+		border-color: var(--fcf7b-border);
+		background: var(--fcf7b-panel);
+	}
+
+	.fcf7-repeater-row-title {
+		color: var(--fcf7b-text);
+	}
+}
+
+.fcf7b-rep-dropbox {
+	min-height: 70px;
+
+	> .fcf7b-rep-stack {
+		display: block;
+	}
+}
+
+.fcf7b-rep-cell {
+	margin-bottom: 10px;
+}
+
+.fcf7b-rep-empty {
+	margin: 0 15px;
+	text-align: center;
+	color: var(--fcf7b-muted);
+	font-size: 11.5px;
+	padding: 24px 10px;
+	border: 1px dashed var(--fcf7b-border);
+	border-radius: 6px;
+}

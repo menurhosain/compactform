@@ -1,0 +1,64 @@
+// --- Slider control (range track + paired number box) -----------------------
+.fcf7b-slider {
+  gap: 0;
+  &-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &-num {
+    flex: 0 0 65px;
+    text-align: center;
+    line-height: 1;
+    min-height: auto !important;
+  }
+
+  // Free-text value for the `custom` unit — fills the row in place of the range.
+  &-custom {
+    flex: 1 1 auto;
+    min-width: 0;
+    line-height: 1;
+    min-height: auto !important;
+    font-family: ui-monospace, Menlo, Consolas, monospace;
+    font-size: 11.5px;
+  }
+
+  &-range {
+    flex: 1 1 auto;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 4px;
+    border-radius: 3px;
+    background: var(--fcf7b-border);
+    cursor: pointer;
+    outline: none;
+
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: var(--fcf7b-accent);
+      border: 2px solid var(--fcf7b-panel);
+      box-shadow: 0 0 0 1px var(--fcf7b-border);
+      cursor: pointer;
+    }
+
+    &::-moz-range-thumb {
+      width: 15px;
+      height: 15px;
+      border: 2px solid var(--fcf7b-panel);
+      border-radius: 50%;
+      background: var(--fcf7b-accent);
+      cursor: pointer;
+    }
+
+    &::-moz-range-track {
+      height: 4px;
+      border-radius: 3px;
+      background: var(--fcf7b-border);
+    }
+  }
+}

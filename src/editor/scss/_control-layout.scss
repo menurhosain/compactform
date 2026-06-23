@@ -1,0 +1,103 @@
+// --- Width control ---------------------------------------------------------
+.fcf7b-width {
+  &-btns {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+  }
+
+  &-btn {
+    padding: 7px 6px;
+    border: 1px solid var(--fcf7b-border);
+    background: var(--fcf7b-panel-2);
+    color: var(--fcf7b-text);
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 11.5px;
+
+    &.active {
+      background: var(--fcf7b-accent);
+      border-color: var(--fcf7b-accent);
+      color: #fff;
+    }
+  }
+
+  .fcf7b-slider {
+    margin-top: 12px;
+    margin-bottom: 0;
+  }
+}
+
+.fcf7b-prop--inline {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  > .fcf7b-prop-desc {
+    flex: 0 0 100%;
+    margin-top: -2px;
+  }
+
+  > .fcf7b-prop-label {
+    margin: 0;
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+  }
+  > select,
+  > input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+  > .fcf7b-select {
+    flex: 1 1 auto;
+    max-width: 130px;
+    padding: 9px 9px;
+    line-height: 1;
+    min-height: auto;
+  }
+  > .fcf7b-select {
+    padding: 0;
+    width: 115px;
+  }
+  > .fcf7b-color,
+  > .fcf7b-typo,
+  > .fcf7b-bxsh {
+    flex: 0 0 auto;
+  }
+}
+
+.fcf7b-ctl-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+
+  .fcf7b-prop-label {
+    margin: 0;
+  }
+
+  .fcf7b-ctl-unit {
+    width: auto;
+    flex: 0 0 auto;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: var(--fcf7b-text);
+    font-size: 11px;
+    cursor: pointer;
+    line-height: 1;
+    text-align: center;
+    min-height: auto;
+    min-width: auto;
+
+    &.is-static {
+      cursor: default;
+      color: var(--fcf7b-muted);
+      background: transparent;
+      border-color: transparent;
+      padding-right: 0;
+    }
+  }
+}

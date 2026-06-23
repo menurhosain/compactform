@@ -1,0 +1,56 @@
+// --- Layout ----------------------------------------------------------------
+.fcf7b-columns {
+  display: grid;
+  grid-template-columns: 232px 1fr 288px;
+  height: 640px;
+}
+
+.fcf7b-palette,
+.fcf7b-props {
+  background: var(--fcf7b-panel);
+  overflow-y: auto;
+}
+
+.fcf7b-palette,
+.fcf7b-props,
+.fcf7b-canvas-wrap,
+.fcf7b-code,
+.fcf7b-select-list,
+.fcf7b-unit-list,
+.fcf7b-typo-pop,
+.fcf7b-bxsh-pop,
+.fcf7b-gs-sidebar,
+.fcf7b-gs-body,
+.fcf7b-gspanel-preview {
+  scrollbar-width: thin;
+  scrollbar-color: var(--fcf7b-border) transparent;
+
+  &::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--fcf7b-border);
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+
+  &:hover::-webkit-scrollbar-thumb {
+    background: var(--fcf7b-muted);
+    background-clip: content-box;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--fcf7b-accent);
+    background-clip: content-box;
+  }
+}
+
+.fcf7b-palette {
+  border-right: 1px solid var(--fcf7b-border);
+  padding: 12px;
+}

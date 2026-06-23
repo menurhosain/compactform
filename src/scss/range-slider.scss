@@ -1,0 +1,307 @@
+
+.wpcf7-form-control.fcf7-range {
+	--fcf7-range-track-height: 6px;
+	--fcf7-range-track-radius: 999px;
+	--fcf7-range-track-bg: #e3e6ea;
+	--fcf7-range-fill-bg: #1e90ff;
+	--fcf7-range-handle-size: 20px;
+	--fcf7-range-handle-radius: 50%;
+	--fcf7-range-handle-bg: #1e90ff;
+	--fcf7-range-handle-border-color: #fff;
+	--fcf7-range-handle-border-width: 2px;
+	--fcf7-range-handle-shadow-color: transparent;
+	--fcf7-range-tick-size: 10px;
+	--fcf7-range-tick-bg: #1e90ff;
+	--fcf7-range-value-bg: #fff;
+
+	--fcf7-range-from: 0%;
+	--fcf7-range-to: 100%;
+
+	display: block !important;
+	width: 100%;
+	max-width: 100%;
+	height: auto;
+	min-height: 0;
+	padding: 0;
+	border: 0;
+	background: none;
+	line-height: normal;
+
+	&.wpcf7-not-valid .fcf7-range-rail {
+		outline: 1px solid #e6194b;
+		outline-offset: 2px;
+	}
+}
+
+.fcf7-range-track {
+	position: relative;
+	display: block;
+	height: var(--fcf7-range-handle-size);
+}
+
+.fcf7-range-rail,
+.fcf7-range-fill {
+	position: absolute;
+	top: 50%;
+	height: var(--fcf7-range-track-height);
+	border-radius: var(--fcf7-range-track-radius);
+	transform: translateY(-50%);
+	pointer-events: none;
+}
+
+.fcf7-range-rail {
+	left: 0;
+	right: 0;
+	background: var(--fcf7-range-track-bg);
+}
+
+.fcf7-range-fill {
+	left: var(--fcf7-range-from);
+	right: calc(100% - var(--fcf7-range-to));
+	background: var(--fcf7-range-fill-bg);
+}
+
+.fcf7-range-ticks {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+}
+
+.fcf7-range-tick {
+	position: absolute;
+	top: 50%;
+	left: var(--pos);
+	width: var(--fcf7-range-tick-size);
+	height: var(--fcf7-range-tick-size);
+	border-radius: 50%;
+	background: var(--fcf7-range-tick-bg);
+	transform: translate(-50%, -50%);
+}
+
+.fcf7-range-tick-labels {
+	position: relative;
+	display: block;
+	height: 1.5em;
+	margin-top: 2px;
+	font-size: 12px;
+	line-height: 1.25;
+	color: #7b8794;
+}
+
+.fcf7-range-tick-label {
+	position: absolute;
+	top: 0;
+	left: var(--pos);
+	transform: translateX(-50%);
+	white-space: nowrap;
+}
+
+.fcf7-range-input {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: var(--fcf7-range-handle-size);
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: none !important;
+	appearance: none;
+	-webkit-appearance: none;
+	z-index: 3;
+	pointer-events: none;
+
+	&:focus {
+		outline: none;
+	}
+
+	&:focus-visible::-webkit-slider-thumb {
+		outline: 2px solid var(--fcf7-range-fill-bg);
+		outline-offset: 2px;
+	}
+
+	&:focus-visible::-moz-range-thumb {
+		outline: 2px solid var(--fcf7-range-fill-bg);
+		outline-offset: 2px;
+	}
+
+	&::-webkit-slider-runnable-track {
+		height: var(--fcf7-range-handle-size);
+		background: none;
+		border: 0;
+	}
+
+	&::-moz-range-track {
+		height: var(--fcf7-range-handle-size);
+		background: none;
+		border: 0;
+	}
+
+	&::-webkit-slider-thumb {
+		appearance: none;
+		-webkit-appearance: none;
+		width: var(--fcf7-range-handle-size);
+		height: var(--fcf7-range-handle-size);
+		box-sizing: border-box;
+		border-radius: var(--fcf7-range-handle-radius);
+		background: var(--fcf7-range-handle-bg);
+		border: var(--fcf7-range-handle-border-width) solid var(--fcf7-range-handle-border-color);
+		box-shadow: 0 0 0 4px var(--fcf7-range-handle-shadow-color);
+		cursor: grab;
+		pointer-events: auto;
+		transition: background-color 0.2s, box-shadow 0.2s, border-color 0.2s;
+	}
+
+	&::-moz-range-thumb {
+		width: var(--fcf7-range-handle-size);
+		height: var(--fcf7-range-handle-size);
+		box-sizing: border-box;
+		border-radius: var(--fcf7-range-handle-radius);
+		background: var(--fcf7-range-handle-bg);
+		border: var(--fcf7-range-handle-border-width) solid var(--fcf7-range-handle-border-color);
+		box-shadow: 0 0 0 4px var(--fcf7-range-handle-shadow-color);
+		cursor: grab;
+		pointer-events: auto;
+		transition: background-color 0.2s, box-shadow 0.2s, border-color 0.2s;
+	}
+
+	&:active::-webkit-slider-thumb {
+		cursor: grabbing;
+	}
+
+	&:active::-moz-range-thumb {
+		cursor: grabbing;
+	}
+}
+
+.fcf7-range-readout {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	font-size: 14px;
+	line-height: 1.4;
+}
+
+.fcf7-range-readout-item {
+	display: inline-flex;
+	align-items: baseline;
+	gap: 3px;
+	padding: 3px 8px;
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	background: var(--fcf7-range-value-bg);
+	white-space: nowrap;
+}
+
+.fcf7-range-readout-label {
+	opacity: 0.65;
+	font-size: 0.85em;
+}
+
+.fcf7-range--value-bubble {
+	.fcf7-range-readout {
+		position: relative;
+		display: block;
+		height: 2.2em;
+		margin-bottom: 4px;
+	}
+
+	.fcf7-range-readout-item {
+		position: absolute;
+		bottom: 0;
+		left: var(--pos);
+		transform: translateX(-50%);
+	}
+
+	.fcf7-range-readout-item::before,
+	.fcf7-range-readout-item::after {
+		content: "";
+		position: absolute;
+		top: 100%;
+		left: 50%;
+		width: 0;
+		height: 0;
+		border-left: 6px solid transparent;
+		border-right: 6px solid transparent;
+		transform: translateX(-50%);
+	}
+
+	.fcf7-range-readout-item::before {
+		border-top: 6px solid #ddd;
+	}
+
+	.fcf7-range-readout-item::after {
+		border-top: 5px solid var(--fcf7-range-value-bg);
+	}
+
+	.fcf7-range-readout-sep {
+		display: none;
+	}
+}
+
+.fcf7-range--value-top .fcf7-range-readout {
+	margin-bottom: 6px;
+}
+
+.fcf7-range--value-bottom .fcf7-range-readout {
+	margin-top: 8px;
+}
+
+.wpcf7-form-control.fcf7-range.fcf7-range--value-end {
+	display: grid !important;
+	grid-template-columns: minmax(0, 1fr) auto;
+	align-items: center;
+	column-gap: 10px;
+
+	.fcf7-range-readout {
+		grid-column: 2;
+		grid-row: 1;
+	}
+
+	.fcf7-range-track {
+		grid-column: 1;
+		grid-row: 1;
+	}
+
+	.fcf7-range-tick-labels,
+	.fcf7-range-scale {
+		grid-column: 1;
+	}
+}
+
+.fcf7-range--value-split {
+	.fcf7-range-readout {
+		justify-content: space-between;
+		margin-top: 10px;
+	}
+
+	.fcf7-range-readout-item {
+		flex-direction: column;
+		align-items: center;
+		gap: 0;
+		padding: 5px 11px;
+		border: 0;
+		border-radius: 5px;
+		box-shadow: 0 0 5px 0 #ddd;
+	}
+
+	.fcf7-range-readout-sep {
+		display: none;
+	}
+}
+
+
+.fcf7-range-scale {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 10px;
+	margin-top: 4px;
+	font-size: 12px;
+	line-height: 1.4;
+	color: #7b8794;
+}
+
+.fcf7-range-scale-label {
+	margin-right: 4px;
+}

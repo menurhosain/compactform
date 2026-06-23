@@ -1,0 +1,46 @@
+{
+	"name": "compactform",
+	"private": true,
+	"version": "1.0.0",
+	"description": "Build tooling for CompactForm.",
+	"scripts": {
+		"start:dashboard": "wp-scripts start --source-path=src/dashboard --output-path=assets/dashboard",
+		"build:dashboard": "wp-scripts build --source-path=src/dashboard --output-path=assets/dashboard",
+		"start:editor": "wp-scripts start --source-path=src/editor --output-path=assets/editor",
+		"build:editor": "wp-scripts build --source-path=src/editor --output-path=assets/editor",
+		"start:assets": "cross-env NODE_ENV=development gulp watch",
+		"build:assets": "cross-env NODE_ENV=production gulp build",
+		"start": "npm-run-all -p start:dashboard start:editor start:assets",
+		"build": "npm-run-all build:dashboard build:editor build:assets i18n",
+		"zip": "node bundle.js",
+		"make-pot": "wp i18n make-pot . languages/compactform.pot --domain=compactform --exclude=node_modules,vendor,bin,assets/vendor,assets/data,.claude",
+		"make-json": "wp i18n make-json languages --no-purge",
+		"i18n": "npm-run-all make-pot make-json",
+		"bundle": "npm-run-all build:dashboard build:assets build:editor i18n zip"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.29.0",
+		"@babel/preset-env": "^7.29.5",
+		"@wordpress/api-fetch": "^7.30.0",
+		"@wordpress/components": "^33.0.0",
+		"@wordpress/element": "^6.45.0",
+		"@wordpress/hooks": "^4.50.0",
+		"@wordpress/i18n": "^6.18.0",
+		"@wordpress/scripts": "^32.1.0",
+		"archiver": "^7.0.1",
+		"cross-env": "^10.1.0",
+		"fs-extra": "^11.3.5",
+		"gulp": "^5.0.1",
+		"gulp-babel": "^8.0.0",
+		"gulp-clean-css": "^4.3.0",
+		"gulp-concat": "^2.6.1",
+		"gulp-rename": "^2.1.0",
+		"gulp-sass": "^6.0.1",
+		"gulp-uglify": "^3.0.2",
+		"npm-run-all": "^4.1.5",
+		"sass": "^1.77.8"
+	},
+	"dependencies": {
+		"react-icons": "^5.6.0"
+	}
+}

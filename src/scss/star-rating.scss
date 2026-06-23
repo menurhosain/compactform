@@ -1,0 +1,31 @@
+.fcf7-rating {
+	.fcf7-rating-input {
+		display: none;
+	}
+
+	.icon {
+		display: inline-flex;
+		gap: 4px;
+	}
+
+	.fcf7-star {
+		display: inline-flex;
+		cursor: pointer;
+		color: #d5d8dc;
+		transition: color 0.15s ease-in-out;
+
+		svg {
+			width: 24px;
+			height: 24px;
+		}
+
+		&:focus-visible {
+			outline: 2px solid #2271b1;
+			outline-offset: 2px;
+		}
+
+		&.is-active {
+			color: #f5a623;
+		}
+	}
+}

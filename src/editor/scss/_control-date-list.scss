@@ -1,0 +1,100 @@
+// --- Date list control (Slot Picker's "Blocked Dates") ---------------------
+.fcf7b-date-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  &-add {
+    display: flex;
+    gap: 6px;
+
+    input[type="date"] {
+      flex: 1;
+      min-width: 0;
+    }
+
+    input[type="number"] {
+      width: 70px !important;
+      flex: 0 0 auto;
+
+      &::-webkit-inner-spin-button,
+      &::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        display: none;
+        margin: 0;
+      }
+    }
+
+    button {
+      flex-shrink: 0;
+      width: 26px;
+      border: 1px solid var(--fcf7b-border);
+      border-radius: 6px;
+      background: var(--fcf7b-panel-2);
+      color: inherit;
+      cursor: pointer;
+
+      &:disabled {
+        opacity: 0.4;
+        cursor: default;
+      }
+    }
+  }
+
+  &-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  &-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 4px 2px 8px;
+    border: 1px solid var(--fcf7b-border);
+    border-radius: 20px;
+    background: var(--fcf7b-panel-2);
+    font-size: 11px;
+    font-family: ui-monospace, Menlo, Consolas, monospace;
+
+    input[type="number"] {
+      width: 70px !important;
+      min-height: 30px;
+      padding: 0px !important;
+      margin: 0px !important;
+      text-align: center;
+      border: 0;
+      background: transparent;
+      color: inherit;
+      font: inherit;
+
+      &::-webkit-inner-spin-button,
+      &::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        display: none;
+        margin: 0;
+      }
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 16px;
+      height: 16px;
+      border: none;
+      border-radius: 50%;
+      background: transparent;
+      color: var(--fcf7b-muted);
+      cursor: pointer;
+      font-size: 13px;
+      line-height: 1;
+
+      &:hover {
+        background: var(--fcf7b-accent-soft);
+        color: var(--fcf7b-accent);
+      }
+    }
+  }
+}

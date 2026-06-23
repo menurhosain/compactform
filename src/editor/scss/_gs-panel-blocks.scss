@@ -1,0 +1,106 @@
+.fcf7b-gspanel-sec + .fcf7b-gspanel-sec {
+  margin-top: 28px;
+}
+
+.fcf7b-gspanel-head {
+  padding-bottom: 12px;
+  margin: 0 0 16px;
+  border-bottom: 1px solid var(--fcf7b-border);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--fcf7b-text);
+
+  &--split {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+}
+
+// Warning / "not connected yet" block.
+.fcf7b-gspanel-notice {
+  padding: 10px 12px;
+  margin-bottom: 16px;
+  border: 1px solid var(--fcf7b-border);
+  border-left: 3px solid var(--fcf7b-danger);
+  border-radius: 6px;
+  background: var(--fcf7b-panel-2);
+  color: var(--fcf7b-muted);
+  font-size: 12px;
+  line-height: 1.6;
+
+  a {
+    color: var(--fcf7b-accent);
+  }
+}
+
+// Native checkbox + its label, on one line.
+.fcf7b-gspanel-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--fcf7b-text);
+  cursor: pointer;
+}
+
+.fcf7b-gspanel-switch {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.fcf7b-gspanel-switchlabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--fcf7b-text);
+
+  em {
+    display: block;
+    margin-top: 4px;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--fcf7b-muted);
+  }
+}
+
+// Label stacked over a full-width input.
+.fcf7b-gspanel-field {
+  margin-bottom: 18px;
+
+  label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--fcf7b-text);
+  }
+
+  input[type="text"],
+  input[type="number"],
+  textarea {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 8px 10px;
+      border: 1px solid var(--fcf7b-border);
+      border-radius: 6px;
+      background: var(--fcf7b-panel-2);
+      color: var(--fcf7b-text);
+      font-size: 12px;
+  }
+
+  textarea {
+      display: block;
+      min-height: 96px;
+      font-family: inherit;
+      line-height: 1.6;
+      resize: vertical;
+  }
+}

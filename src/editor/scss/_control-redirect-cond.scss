@@ -1,0 +1,111 @@
+// --- Custom redirect condition control (repeatable rule list) --------------
+.fcf7b-redirect-cond-ctl {
+  .fcf7b-redirect-cond-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .fcf7b-redirect-cond-row {
+    border: 1px dashed var(--fcf7b-border);
+    border-radius: 8px;
+
+    &.is-open {
+      border-style: solid;
+    }
+  }
+
+  .fcf7b-redirect-cond-head {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 8px 8px 6px;
+    cursor: pointer;
+    user-select: none;
+
+    &:hover {
+      background: var(--fcf7b-panel-2);
+    }
+  }
+
+  .fcf7b-redirect-cond-caret {
+    flex: 0 0 auto;
+    font-size: 14px;
+    color: var(--fcf7b-muted);
+  }
+
+  .fcf7b-redirect-cond-title {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--fcf7b-text);
+  }
+
+  .fcf7b-redirect-cond-remove {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--fcf7b-muted);
+    cursor: pointer;
+
+    &:hover {
+      background: var(--fcf7b-border);
+      color: var(--fcf7b-text);
+    }
+  }
+
+  .fcf7b-redirect-cond-body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 4px 10px 10px;
+    border-top: 1px solid var(--fcf7b-border);
+  }
+
+  .fcf7b-redirect-cond-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    > .fcf7b-ctl-rowlabel {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--fcf7b-text);
+    }
+
+    textarea {
+      resize: vertical;
+    }
+  }
+
+  .fcf7b-redirect-cond-add {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 7px 10px;
+    border: 1px dashed var(--fcf7b-border);
+    border-radius: 7px;
+    background: transparent;
+    color: var(--fcf7b-accent);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    width: max-content;
+
+    &:hover {
+      background: var(--fcf7b-panel-2);
+    }
+  }
+}

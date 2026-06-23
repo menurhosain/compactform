@@ -1,0 +1,89 @@
+.fcf7b-gspanel-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.fcf7b-gspanel-rowline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fcf7b-gspanel-cell {
+  flex: 1 1 0;
+  min-width: 0;
+
+  input[type="text"],
+  input[type="number"] {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid var(--fcf7b-border);
+    border-radius: 6px;
+    background: var(--fcf7b-panel-2);
+    color: var(--fcf7b-text);
+    font-size: 12px;
+  }
+
+  &--narrow {
+    flex: 0 0 130px;
+  }
+}
+
+.fcf7b-gspanel-del {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--fcf7b-border);
+  border-radius: 6px;
+  background: var(--fcf7b-panel-2);
+  color: var(--fcf7b-muted);
+  font-size: 14px;
+  cursor: pointer;
+
+  &:hover {
+    border-color: var(--fcf7b-danger);
+    color: var(--fcf7b-danger);
+  }
+}
+
+.fcf7b-gspanel-add {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: 1px dashed var(--fcf7b-border);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--fcf7b-muted);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover {
+    border-color: var(--fcf7b-accent);
+    color: var(--fcf7b-accent);
+  }
+}
+
+.fcf7b-gspanel-none {
+  margin: 0;
+  padding: 10px 12px;
+  border: 1px dashed var(--fcf7b-border);
+  border-radius: 6px;
+  color: var(--fcf7b-muted);
+  font-size: 11px;
+}
+
+.fcf7b-gspanel-rowhead {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--fcf7b-muted);
+}
+
+.fcf7b-gspanel-headspacer {
+  flex: 0 0 30px;
+}

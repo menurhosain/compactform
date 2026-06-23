@@ -1,0 +1,152 @@
+.fcf7-dashboard {
+	.fcf7-config-page {
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+	}
+
+	.fcf7-config-container {
+		max-width: 720px;
+		padding: 26px;
+		border: 1px solid var(--fcf7Border);
+		border-radius: 12px;
+		background: #fff;
+		.components-input-control__backdrop,
+		input {
+			height: 40px !important;
+			border: 1px solid var(--fcf7Border) !important;
+			border-radius: 5px !important;
+			padding: 0 14px !important;
+		}
+		.components-input-control__backdrop {
+			padding: 0 30px 0 14px !important;
+		}
+	}
+
+	.fcf7-config-heading {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		font-size: 18px;
+		margin-bottom: 6px;
+
+		svg {
+			width: 18px;
+			height: 18px;
+			color: var(--fcf7Primary);
+		}
+	}
+
+	.fcf7-config-text {
+		font-size: 13.5px;
+		color: var(--fcf7Body);
+		margin-bottom: 20px;
+	}
+
+	.fcf7-config-form {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	.fcf7-config-grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 16px 20px;
+
+		@media (max-width: 640px) {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	.fcf7-gsheet-banner {
+		padding: 10px 14px;
+		border-radius: 8px;
+		font-size: 13px;
+		margin-bottom: 20px;
+
+		&--success {
+			background: #edfaef;
+			color: #1a7f37;
+			border: 1px solid #b7ebc0;
+		}
+
+		&--error {
+			background: #fdeeee;
+			color: #c53030;
+			border: 1px solid #f3b7b7;
+		}
+	}
+
+	.fcf7-gsheet-redirect-uri {
+		display: flex;
+		align-items: flex-end;
+		gap: 10px;
+		margin-bottom: 20px;
+
+		.components-base-control {
+			flex: 1;
+		}
+
+		.fcf7-copy-btn {
+			display: flex;
+			align-items: center;
+			gap: 6px;
+			height: 40px;
+			padding: 0 14px;
+			border: 1px solid var(--fcf7Border);
+			border-radius: 6px;
+			background: #fff;
+			cursor: pointer;
+			font-size: 13px;
+			white-space: nowrap;
+
+			svg {
+				width: 14px;
+				height: 14px;
+			}
+
+			&:hover {
+				background: #f6f7f7;
+			}
+		}
+	}
+
+	.fcf7-gsheet-connect {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		margin-top: 20px;
+		padding-top: 20px;
+		border-top: 1px solid var(--fcf7Border);
+		button {
+			border-radius: 8px;
+		}
+	}
+
+	.fcf7-gsheet-connected {
+		font-size: 13.5px;
+		color: var(--fcf7Body);
+	}
+
+	.fcf7-stripe-mode-badge {
+		font-size: 11px;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.02em;
+		padding: 2px 8px;
+		border-radius: 999px;
+
+		&--test {
+			background: #fff6e5;
+			color: #a86400;
+			border: 1px solid #f3ddab;
+		}
+
+		&--live {
+			background: #edfaef;
+			color: #1a7f37;
+			border: 1px solid #b7ebc0;
+		}
+	}
+}

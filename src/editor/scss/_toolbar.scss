@@ -1,0 +1,275 @@
+// --- Toolbar ---------------------------------------------------------------
+.fcf7b-toolbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 14px;
+  background: var(--fcf7b-panel);
+  border-bottom: 1px solid var(--fcf7b-border);
+
+  .fcf7b-brand {
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    color: var(--fcf7b-accent);
+
+    .fcf7b-brand-logo {
+      display: block;
+      height: 26px;
+      width: auto;
+      max-width: 160px;
+    }
+  }
+
+  .fcf7b-tabs {
+    display: flex;
+    gap: 4px;
+    background: var(--fcf7b-panel-2);
+    padding: 3px;
+    border-radius: 8px;
+    border: 1px solid var(--fcf7b-border);
+
+    button {
+      border: 0;
+      background: transparent;
+      color: var(--fcf7b-muted);
+      padding: 5px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 12px;
+
+      &.active {
+        background: var(--fcf7b-panel);
+        color: var(--fcf7b-text);
+        box-shadow: var(--fcf7b-shadow);
+      }
+    }
+  }
+
+  .fcf7b-tb-right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    .fcf7b-count {
+      color: var(--fcf7b-muted);
+      font-size: 12px;
+    }
+
+    // Responsive editing target (desktop / tablet / mobile).
+    .fcf7b-devices {
+      display: flex;
+      gap: 2px;
+      padding: 2px;
+      border: 1px solid var(--fcf7b-border);
+      border-radius: 7px;
+      background: var(--fcf7b-panel-2);
+
+      button {
+        width: 26px;
+        height: 24px;
+        display: grid;
+        place-items: center;
+        border: 0;
+        border-radius: 5px;
+        background: transparent;
+        color: var(--fcf7b-muted);
+        cursor: pointer;
+        font-size: 14px;
+
+        &:hover {
+          color: var(--fcf7b-accent);
+        }
+
+        &.active {
+          background: var(--fcf7b-panel);
+          color: var(--fcf7b-accent);
+          box-shadow: var(--fcf7b-shadow);
+        }
+      }
+    }
+
+    // Icon buttons (undo / redo / theme / fullscreen).
+    .fcf7b-ghost {
+      border: 1px solid var(--fcf7b-border);
+      background: var(--fcf7b-panel);
+      color: var(--fcf7b-text);
+      width: 30px;
+      height: 30px;
+      border-radius: 7px;
+      cursor: pointer;
+      font-size: 15px;
+
+      &:hover {
+        border-color: var(--fcf7b-accent);
+        color: var(--fcf7b-accent);
+      }
+
+      &:disabled {
+        opacity: 0.3;
+        cursor: default;
+      }
+    }
+
+    // Segmented cluster of icon buttons (history | file | view), so the
+    // toolbar reads as grouped tools rather than a flat pile of buttons.
+    .fcf7b-tb-group {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      padding: 2px;
+      border: 1px solid var(--fcf7b-border);
+      border-radius: 8px;
+      background: var(--fcf7b-panel-2);
+
+      .fcf7b-ghost {
+        width: 28px;
+        height: 26px;
+        border: 0;
+        border-radius: 6px;
+        background: transparent;
+        color: var(--fcf7b-muted);
+
+        &:hover:not(:disabled) {
+          background: var(--fcf7b-panel);
+          color: var(--fcf7b-accent);
+        }
+      }
+
+      .fcf7b-tb-div {
+        width: 1px;
+        align-self: stretch;
+        margin: 3px 3px;
+        background: var(--fcf7b-border);
+      }
+    }
+
+    .fcf7b-canvasbg {
+      position: relative;
+      display: inline-flex;
+
+      &-pop {
+        position: absolute;
+        top: calc(100% + 8px);
+        right: 0;
+        z-index: 100003;
+        padding: 8px;
+        border: 1px solid var(--fcf7b-border);
+        border-radius: 8px;
+        background: var(--fcf7b-panel);
+        box-shadow: var(--fcf7b-shadow);
+      }
+
+      &-swatches {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 6px;
+      }
+
+      &-sw {
+        height: 22px;
+        padding: 0;
+        border: 1px solid var(--fcf7b-border);
+        border-radius: 5px;
+        cursor: pointer;
+
+        &.is-active {
+          border-color: var(--fcf7b-accent);
+          box-shadow: 0 0 0 2px var(--fcf7b-accent-soft);
+        }
+
+        &.is-default {
+          background:
+            linear-gradient(
+                45deg,
+                transparent 45%,
+                var(--fcf7b-danger) 45%,
+                var(--fcf7b-danger) 55%,
+                transparent 55%
+              )
+              var(--fcf7b-panel-2);
+        }
+      }
+
+      &-custom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-top: 8px;
+        padding-top: 8px;
+        border-top: 1px solid var(--fcf7b-border);
+        font-size: 11px;
+        color: var(--fcf7b-muted);
+      }
+
+      &-pop {
+        overflow: visible;
+      }
+    }
+
+    // Quick-save button.
+    .fcf7b-save {
+      position: relative;
+      overflow: hidden;
+      min-width: 92px;
+      border: 0;
+      border-radius: 6px;
+      padding: 7px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #fff;
+      background: var(--fcf7b-accent);
+      cursor: pointer;
+      transition:
+        background 0.15s ease,
+        opacity 0.15s ease;
+
+      &:hover {
+        background: color-mix(in srgb, var(--fcf7b-accent), black 20%);
+      }
+      &:disabled {
+        opacity: 0.7;
+        cursor: default;
+      }
+      &--saved {
+        background: #16a34a;
+      }
+      &--error {
+        background: #dc2626;
+      }
+    }
+  }
+}
+
+// Quick-save progress — rides the toolbar's bottom border, out of flow so it adds no height.
+.fcf7b-progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: transparent;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+
+  &.is-active {
+    opacity: 1;
+  }
+
+  &-fill {
+    display: block;
+    width: 0;
+    height: 100%;
+    background: var(--fcf7b-accent);
+    transition: width 0.3s ease;
+  }
+
+  &--error &-fill {
+    background: #dc2626;
+  }
+}

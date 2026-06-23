@@ -1,0 +1,72 @@
+// --- Theme tokens (CSS custom properties, swapped at runtime for light/dark) -
+@mixin theme-light {
+  --fcf7b-bg: #f4f5f7;
+  --fcf7b-panel: #ffffff;
+  --fcf7b-panel-2: #fbfbfd;
+  --fcf7b-border: #e3e5ea;
+  --fcf7b-heading: #000;
+  --fcf7b-text: #1e2126;
+  --fcf7b-muted: #6b7280;
+  --fcf7b-accent: #1497ff;
+  --fcf7b-accent-fg: #fff;
+  --fcf7b-accent-soft: #eef4fe;
+  --fcf7b-danger: #dc2626;
+  --fcf7b-shadow: 0 1px 2px rgba(16, 18, 27, 0.06),
+    0 2px 8px rgba(16, 18, 27, 0.05);
+}
+
+@mixin field-tokens-light {
+  --fcf7-field-bg: #ffffff;
+  --fcf7-field-color: #1e2126;
+  --fcf7-field-border: #d5d8dc;
+  --fcf7-field-placeholder: #9aa1ad;
+  --fcf7-label-color: #1e2126;
+  --fcf7-muted: #6b7280;
+}
+
+@mixin field-tokens-dark {
+  --fcf7-field-bg: #1b1e24;
+  --fcf7-field-color: #e7e9ee;
+  --fcf7-field-border: #3a3f4b;
+  --fcf7-field-placeholder: #7c848f;
+  --fcf7-label-color: #f2f4f8;
+  --fcf7-muted: #9aa1ad;
+}
+
+@mixin theme-dark {
+  --fcf7b-bg: #16181d;
+  --fcf7b-panel: #1e2127;
+  --fcf7b-panel-2: #23262e;
+  --fcf7b-border: #31353f;
+  --fcf7b-text: #e7e9ee;
+  --fcf7b-heading: #fff;
+  --fcf7b-muted: #9aa1ad;
+  --fcf7b-accent: #1497ff;
+  --fcf7b-accent-fg: #fff;
+  --fcf7b-accent-soft: #2a3445;
+  --fcf7b-danger: #f87171;
+  --fcf7b-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+
+.fcf7-builder-root {
+  @include theme-light;
+  --fcf7b-radius: 10px;
+
+  @media (prefers-color-scheme: dark) {
+    @include theme-dark;
+  }
+
+  button {
+    transition: all 0.3s;
+  }
+}
+
+.fcf7-builder-root,
+.fcf7b-app {
+  box-sizing: border-box;
+}
+
+.fcf7b-boot {
+  padding: 40px;
+  color: var(--fcf7b-muted);
+}

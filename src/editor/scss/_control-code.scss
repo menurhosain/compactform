@@ -1,0 +1,69 @@
+
+.fcf7b-prop {
+  .CodeMirror {
+    height: 260px;
+    background: #1e1e1e;
+    color: #d4d4d4;
+    border: 1px solid #000;
+    border-radius: 7px;
+    font-size: 12px;
+    line-height: 1.55;
+    max-width: 100%;
+  }
+
+  .CodeMirror-gutters {
+    background: #1a1a1a;
+    border-right: 1px solid #2b2b2b;
+  }
+
+  .CodeMirror-linenumber {
+    color: #6a6a6a;
+  }
+
+  .CodeMirror-cursor {
+    border-left-color: #d4d4d4;
+  }
+
+  .CodeMirror-activeline-background {
+    background: #262626;
+  }
+  .CodeMirror-selected {
+    background: #264f78;
+  }
+  .CodeMirror-focused .CodeMirror-selected {
+    background: #264f78;
+  }
+
+  .CodeMirror-matchingtag {
+    background: rgba(86, 156, 214, 0.22);
+  }
+  .cm-tag {
+    color: #569cd6;
+  }
+  .cm-attribute {
+    color: #9cdcfe;
+  }
+  .cm-string {
+    color: #ce9178;
+  }
+  .cm-bracket,
+  .cm-punctuation {
+    color: #808080;
+  }
+  .cm-comment {
+    color: #6a9955;
+  }
+  .cm-keyword,
+  .cm-atom {
+    color: #c586c0;
+  }
+  .cm-number {
+    color: #b5cea8;
+  }
+  .cm-error {
+    color: #f48771;
+  }
+  .CodeMirror-lint-markers {
+    background: #1a1a1a;
+  }
+}

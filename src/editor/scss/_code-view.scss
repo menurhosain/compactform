@@ -1,0 +1,39 @@
+// --- Generated code view ---------------------------------------------------
+.fcf7b-code {
+  height: 640px;
+  overflow-y: auto;
+  padding: 20px;
+  background: var(--fcf7b-panel);
+
+  &-note {
+    color: var(--fcf7b-muted);
+    margin-bottom: 12px;
+    max-width: 640px;
+  }
+
+  pre.fcf7b-code-pre {
+    background: #1e1e1e;
+    border: 1px solid #000;
+    border-radius: 10px;
+    padding: 16px;
+    overflow-x: auto;
+    font-family: ui-monospace, Menlo, Consolas, monospace;
+    font-size: 12.5px;
+    white-space: pre-wrap;
+    word-break: break-word;
+    color: #d4d4d4;
+
+    .fcf7b-tok-tag {
+      color: #569cd6;
+    } // element / shortcode name
+    .fcf7b-tok-attr {
+      color: #9cdcfe;
+    } // attribute name, bare shortcode option
+    .fcf7b-tok-str {
+      color: #ce9178;
+    } // quoted attribute / option value
+    .fcf7b-tok-punct {
+      color: #808080;
+    } // <, >, [, ], /
+  }
+}

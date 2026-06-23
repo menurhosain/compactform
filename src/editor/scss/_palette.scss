@@ -1,0 +1,90 @@
+// --- Palette ---------------------------------------------------------------
+.fcf7b-app .fcf7b-search {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  border: 1px solid var(--fcf7b-border);
+  background: var(--fcf7b-panel-2);
+  color: var(--fcf7b-text);
+
+  &::placeholder {
+    color: var(--fcf7b-muted);
+  }
+}
+
+.fcf7b-pal {
+  &-group {
+    margin-bottom: 16px;
+  }
+
+  &-title {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--fcf7b-muted);
+    margin: 0 0 8px 2px;
+    font-weight: 700;
+  }
+
+  &-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  &-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 6px;
+    border: 1px solid var(--fcf7b-border);
+    border-radius: 9px;
+    background: var(--fcf7b-panel-2);
+    color: var(--fcf7b-text);
+    cursor: grab;
+    transition: all 0.12s;
+
+    &:hover {
+      border-color: var(--fcf7b-accent);
+      background: var(--fcf7b-accent-soft);
+      transform: translateY(-1px);
+    }
+
+    &:active {
+      cursor: grabbing;
+    }
+  }
+
+  &-pro {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    display: grid;
+    place-items: center;
+
+    svg {
+      width: 14px;
+      height: 14px;
+      fill: rgb(255 173 0);
+    }
+  }
+
+  &-icon {
+    font-size: 18px;
+    width: 30px;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    background: var(--fcf7b-panel);
+    border-radius: 8px;
+    border: 1px solid var(--fcf7b-border);
+  }
+
+  &-label {
+    font-size: 11.5px;
+    font-weight: 600;
+  }
+}

@@ -1,0 +1,135 @@
+
+.fcf7b-glimpse {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	padding: 18px;
+	filter: blur(6px) saturate(0.92);
+	opacity: 0.8;
+	pointer-events: none;
+	user-select: none;
+
+	> div {
+		background: #fff;
+		border: 1px solid #e5e7eb;
+		border-radius: 8px;
+	}
+}
+
+.fcf7b-glimpse-toolbar {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	flex: 0 0 46px;
+	padding: 0 14px;
+
+	span {
+		height: 12px;
+		border-radius: 6px;
+		background: #e5e7eb;
+
+		&:nth-child(1) { width: 78px; background: #0091fa61; }
+		&:nth-child(2) { width: 54px; }
+		&:nth-child(3) { width: 62px; }
+		&:last-child { width: 58px; height: 22px; margin-left: auto; background: #0091fa; }
+	}
+}
+
+.fcf7b-glimpse-body {
+	display: flex;
+	flex: 1;
+	gap: 14px;
+	min-height: 0;
+	background: none;
+	border: 0;
+	border-radius: 0;
+}
+
+.fcf7b-glimpse-fields,
+.fcf7b-glimpse-canvas,
+.fcf7b-glimpse-panel {
+	background: #fff;
+	border: 1px solid #e5e7eb;
+	border-radius: 8px;
+	padding: 14px;
+	overflow: hidden;
+}
+
+.fcf7b-glimpse-fields {
+	flex: 0 0 196px;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-auto-rows: 56px;
+	gap: 10px;
+
+	i {
+		display: block;
+		border: 1px solid #e5e7eb;
+		border-radius: 6px;
+		background: #fafafa;
+	}
+}
+
+.fcf7b-glimpse-canvas {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	min-width: 0;
+
+	b {
+		display: block;
+		height: 11px;
+		width: 42%;
+		border-radius: 6px;
+		background: #d1d5db;
+	}
+
+	u {
+		display: block;
+		height: 38px;
+		margin-top: 8px;
+		border: 1px solid #e5e7eb;
+		border-radius: 6px;
+		background: #f6f7f9;
+		text-decoration: none;
+	}
+}
+
+.fcf7b-glimpse-row {
+	display: flex;
+	gap: 14px;
+
+	> div { flex: 1; }
+}
+
+.fcf7b-glimpse-cta {
+	height: 40px;
+	width: 148px;
+	border-radius: 6px;
+	background: #0091fa;
+}
+
+.fcf7b-glimpse-panel {
+	flex: 0 0 214px;
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+
+	div {
+		height: 10px;
+		border-radius: 5px;
+		background: #e5e7eb;
+
+		&:nth-child(odd) { width: 60%; }
+	}
+
+	.fcf7b-glimpse-input {
+		height: 30px;
+		width: 100%;
+		border-radius: 6px;
+		background: #f6f7f9;
+	}
+}

@@ -1,0 +1,75 @@
+
+.fcf7-sp {
+  display: block;
+
+  .fcf7-sp-challenge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .fcf7-sp-question {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 4px;
+    background-color: #f5f6f8;
+    color: #20242c;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 2px;
+
+    user-select: none;
+  }
+
+  .fcf7-sp-canvas,
+  .fcf7-sp-fallback-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
+
+  .fcf7-sp-refresh {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    border: 0;
+    border-radius: 4px;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    line-height: 0;
+
+    svg {
+      width: 18px;
+      height: 18px;
+      transition: transform 0.4s ease;
+    }
+
+    &:hover svg {
+      transform: rotate(-180deg);
+    }
+
+    &.is-busy {
+      cursor: default;
+      opacity: 0.6;
+
+      svg {
+        animation: fcf7-sp-spin 0.8s linear infinite;
+      }
+    }
+  }
+
+  .fcf7-sp-answer {
+    display: block;
+  }
+}
+
+@keyframes fcf7-sp-spin {
+  to {
+    transform: rotate(-360deg);
+  }
+}

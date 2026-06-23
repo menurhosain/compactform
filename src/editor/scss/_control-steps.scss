@@ -1,0 +1,137 @@
+// --- Steps control (Multistep field's step repeater) -----------------------
+.fcf7b-steps-ctl {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  &-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px;
+    border: 1px solid var(--fcf7b-border);
+    border-radius: 7px;
+    background: var(--fcf7b-panel-2);
+    transition: border-color 0.12s;
+
+    &.is-drop-before {
+      border-top: 3px solid var(--fcf7b-accent);
+    }
+  }
+
+  &-handle {
+    cursor: grab;
+    opacity: 0.5;
+    font-size: 14px;
+    color: var(--fcf7b-muted);
+    flex: 0 0 auto;
+    display: flex;
+
+    &:hover {
+      opacity: 1;
+    }
+    &:active {
+      cursor: grabbing;
+    }
+  }
+
+  &-index {
+    flex: 0 0 auto;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--fcf7b-border);
+    color: var(--fcf7b-muted);
+    font-size: 10px;
+    font-weight: 600;
+    margin-top: 1px;
+  }
+
+  &-label {
+    flex: 1 1 auto;
+    min-width: 0;
+    border: 0 !important;
+    background: transparent !important;
+    padding: 6px 4px !important;
+    font-size: 12.5px;
+  }
+
+  &-price {
+    flex: 0 0 auto;
+    width: 35px !important;
+    padding: 0px !important;
+    margin: 0px !important;
+    text-align: center;
+    -moz-appearance: textfield;
+
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      display: none;
+      margin: 0;
+    }
+  }
+
+  &-remove {
+    flex: 0 0 auto;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    font-size: 13px;
+    padding: 4px 6px;
+    border-radius: 6px;
+    color: var(--fcf7b-muted);
+
+    &:hover:not(:disabled) {
+      background: var(--fcf7b-danger);
+      color: #fff;
+    }
+    &:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+  }
+  
+  &--time-price {
+    .fcf7b-steps-ctl-row {
+      gap: 0px;
+    }
+
+    input[type="time"]::-webkit-calendar-picker-indicator {
+      margin-left: 0;
+    }
+  }
+
+  &-drop-end {
+    height: 6px;
+    border-radius: 3px;
+
+    &.is-drop-before {
+      border-top: 3px solid var(--fcf7b-accent);
+    }
+  }
+
+  &-add {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 2px;
+    padding: 7px 10px;
+    border: 1px dashed var(--fcf7b-border);
+    border-radius: 7px;
+    background: transparent;
+    color: var(--fcf7b-accent);
+    font-size: 11.5px;
+    font-weight: 600;
+    cursor: pointer;
+
+    &:hover {
+      border-style: solid;
+      background: var(--fcf7b-accent-soft);
+    }
+  }
+}

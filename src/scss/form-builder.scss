@@ -1,0 +1,18 @@
+
+.flatpickr-current-month {
+	display: flex;
+	justify-content: center;
+}
+.fcf7b-cond-hidden {
+	display: none !important;
+}
+
+@import "multistep-shared";
+
+.fcf7b-ms-panel {
+	display: none;
+
+	&.is-active {
+		display: block;
+	}
+}

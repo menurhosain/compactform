@@ -1,0 +1,46 @@
+.fcf7-dashboard {
+	.fcf7-doclist {
+		display: flex;
+		flex-direction: column;
+		border: 1px solid var(--fcf7Border);
+		border-radius: 12px;
+		overflow: hidden;
+	}
+
+	.fcf7-doc-row {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		padding: 14px 18px;
+		border-bottom: 1px solid var(--fcf7Border);
+		color: var(--fcf7Title);
+
+		&:last-child {
+			border-bottom: 0;
+		}
+
+		&:hover {
+			background: #f8fafc;
+		}
+
+		.fcf7-doc-row-name {
+			font-size: 14px;
+			font-weight: 500;
+			flex: 1 1 auto;
+		}
+
+		.fcf7-doc-row-tag {
+			font-size: 12px;
+			font-family: Menlo, Consolas, monospace;
+			background: var(--fcf7Shade);
+			padding: 3px 9px;
+			border-radius: 6px;
+			color: #475569;
+		}
+
+		svg {
+			font-size: 16px;
+			color: #94a3b8;
+		}
+	}
+}

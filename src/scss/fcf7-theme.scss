@@ -1,0 +1,227 @@
+
+@import "divider-patterns";
+
+:root {
+	--fcf7-field-bg: #ffffff;
+	--fcf7-field-color: #1e2126;
+	--fcf7-field-border: #d5d8dc;
+	--fcf7-field-radius: 6px;
+	--fcf7-field-pad-y: 11px;
+	--fcf7-field-pad-x: 14px;
+	--fcf7-field-font: 14px;
+	--fcf7-field-placeholder: #9aa1ad;
+	--fcf7-label-color: #1e2126;
+	--fcf7-label-font: 14px;
+	--fcf7-muted: #6b7280;
+	--fcf7-accent: #1497ff;
+	--fcf7-ring: rgba(20, 151, 255, 0.18);
+	--fcf7-danger: #dc2626;
+}
+
+.wpcf7-spinner {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.fcf7b-field-wrap:has(.wpcf7-spinner) {
+  position: relative;
+}
+
+input[type="submit"].wpcf7-form-control {
+  background: var(--fcf7-accent);
+  color: #fff;
+  border: 0;
+  padding: 9px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+form > .fcf7b-field-wrap,
+.fcf7b-ms-panel > .fcf7b-field-wrap,
+.fcf7-repeater-row > .fcf7b-field-wrap {
+   margin-bottom: var(--fcf7b-field-gap, 20px);
+}
+
+form > .fcf7b-field-wrap:not(:has(~ .fcf7b-field-wrap)),
+.fcf7b-ms-panel > .fcf7b-field-wrap:not(:has(~ .fcf7b-field-wrap)),
+.fcf7-repeater-row > .fcf7b-field-wrap:not(:has(~ .fcf7b-field-wrap)) {
+	margin-bottom: 0;
+}
+
+.fcf7b-field-wrap {
+	> .fcf7b-field {
+		display: block;
+	}
+
+	.fcf7b-field-label {
+		display: block;
+		margin: 0 0 6px;
+		font-size: var(--fcf7-label-font);
+		font-weight: 600;
+		line-height: 1.4;
+		color: var(--fcf7-label-color);
+	}
+
+	.fcf7b-req {
+		color: var(--fcf7-danger);
+	}
+
+	.fcf7b-desc {
+		display: block;
+		margin-top: 6px;
+		font-size: 12.5px;
+		line-height: 1.45;
+		color: var(--fcf7-muted);
+	}
+
+	.wpcf7-form-control-wrap {
+		display: block;
+		position: relative;
+
+		&:has(.wpcf7-acceptance) {
+			display: inline-block;
+			margin-inline-end: 8px;
+		}
+
+		.wpcf7-form-control:where(input, select, textarea) {
+			box-sizing: border-box;
+			width: 100%;
+			max-width: 100%;
+			height: auto;
+			margin: 0;
+			padding: var(--fcf7-field-pad-y) var(--fcf7-field-pad-x) var(--fcf7-field-pad-y)
+				var(--fcf7-field-pad-left, var(--fcf7-field-pad-x));
+			font-family: inherit;
+			font-size: var(--fcf7-field-font);
+			line-height: 1.45;
+			color: var(--fcf7-field-color);
+			background-color: var(--fcf7-field-bg);
+			border: 1px solid var(--fcf7-field-border);
+			border-radius: var(--fcf7-field-radius);
+			box-shadow: none;
+			transition: border-color 0.15s ease, box-shadow 0.15s ease;
+
+			&:focus {
+				outline: 0;
+				border-color: var(--fcf7-accent);
+				box-shadow: 0 0 0 3px var(--fcf7-ring);
+			}
+
+			&::placeholder {
+				color: var(--fcf7-field-placeholder);
+				opacity: 1;
+			}
+		}
+
+		.wpcf7-form-control:where(textarea) {
+			display: block;
+			min-height: 96px;
+			resize: vertical;
+		}
+	}
+
+	.wpcf7-form-control:where(select) {
+		appearance: none;
+		-webkit-appearance: none;
+		padding-right: 36px;
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%236b7280' stroke-width='1.6'%3E%3Cpath d='M5 8l5 5 5-5'/%3E%3C/svg%3E");
+		background-repeat: no-repeat;
+		background-position: right 12px center;
+		background-size: 16px 16px;
+	}
+
+	.wpcf7-form-control:where(.wpcf7-radio, .wpcf7-checkbox, .wpcf7-acceptance) {
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+	}
+
+	.wpcf7-list-item {
+		margin: 0;
+		color: var(--fcf7-field-color);
+
+		label,
+		&:not(:has(> label)) {
+			display: inline-flex;
+			align-items: center;
+			gap: 7px;
+			font-size: var(--fcf7-field-font);
+			line-height: 1.4;
+			color: inherit;
+            margin: 0px;
+		}
+
+		input:where([type="checkbox"], [type="radio"]) {
+			flex: 0 0 auto;
+			width: 16px;
+			height: 16px;
+			margin: 0;
+			accent-color: var(--fcf7-accent);
+		}
+	}
+}
+
+.fcf7b-heading {
+	margin: 0 !important;
+}
+
+.fcf7b-divider {
+	display: block;
+	width: 100%;
+	border: 0;
+	border-top: 1px solid var(--fcf7b-divider-color, var(--fcf7-field-border));
+	margin: 0;
+	box-sizing: border-box;
+}
+
+.fcf7b-field-wrap:has( > .fcf7b-divider) {
+  align-self: stretch;
+}
+
+.fcf7-field-icon {
+	--fcf7-field-pad-left: 38px;
+
+	position: relative;
+	display: block;
+
+	> i {
+		position: absolute;
+		left: 12px;
+		top: 50%;
+		transform: translateY(-50%);
+		font-size: 16px;
+		line-height: 1;
+		color: var(--fcf7-muted);
+		pointer-events: none;
+		z-index: 2;
+        font-weight: 400;
+	}
+
+	&:has(textarea) > i {
+		top: 18px;
+		transform: none;
+	}
+}
+
+.fcf7b-canvas-wrap {
+	.wpcf7-form-control:where(input, select, textarea) {
+		height: auto;
+		min-height: 0;
+		vertical-align: baseline;
+	}
+
+	input:where([type="checkbox"], [type="radio"]) {
+		appearance: auto;
+		-webkit-appearance: auto;
+		min-width: 0;
+		border: 0;
+		background: none;
+		box-shadow: none;
+		transition: none;
+
+		&::before {
+			content: none;
+		}
+	}
+}

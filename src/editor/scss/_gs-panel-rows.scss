@@ -1,0 +1,88 @@
+.fcf7b-gspanel-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.fcf7b-gspanel-rowlabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--fcf7b-text);
+}
+
+.fcf7b-gspanel-num {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+
+  input {
+    width: 82px;
+    padding: 6px 8px;
+    border: 1px solid var(--fcf7b-border);
+    border-radius: 6px;
+    background: var(--fcf7b-panel-2);
+    color: var(--fcf7b-text);
+    font-size: 12px;
+    text-align: center;
+  }
+
+  em {
+    font-style: normal;
+    font-size: 11px;
+    color: var(--fcf7b-muted);
+  }
+}
+
+.fcf7b-gspanel-desc {
+  margin: 6px 0 0;
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--fcf7b-muted);
+
+  code {
+    padding: 1px 4px;
+    border-radius: 4px;
+    background: var(--fcf7b-panel-2);
+  }
+}
+
+.fcf7b-gspanel-intro {
+  margin: -8px 0 18px;
+}
+
+.fcf7b-gspanel-subhead {
+  margin: 26px 0 14px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--fcf7b-muted);
+}
+
+.fcf7b-gspanel-colorrow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px 0;
+
+  > span {
+    font-size: 12px;
+    color: var(--fcf7b-muted);
+  }
+}
+
+.fcf7b-gspanel-cols {
+  display: flex;
+  gap: 12px;
+
+  > * {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+}

@@ -1,0 +1,132 @@
+
+.fcf7b-ms-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+
+.fcf7b-ms-tab {
+  border: 1px solid #e3e5ea;
+  background: #fbfbfd;
+  color: #6b7280;
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+
+  &.is-active {
+    background: #0091fa;
+    border-color: #0091fa;
+    color: #fff;
+  }
+}
+
+.fcf7b-ms-steps {
+  display: flex;
+  margin-bottom: 14px;
+}
+
+.fcf7b-ms-step {
+  position: relative;
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+  min-width: 0;
+
+  &:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    width: 100%;
+    height: 2px;
+    background: #0091fa;
+    z-index: 0;
+  }
+}
+
+.fcf7b-ms-step-circle {
+  position: relative;
+  z-index: 1;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #0091fa;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #0091fa;
+  font-size: 15px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.fcf7b-ms-step-check {
+  display: none;
+  width: 15px;
+  height: 15px;
+}
+
+.fcf7b-ms-step.is-done .fcf7b-ms-step-circle,
+.fcf7b-ms-step.is-active .fcf7b-ms-step-circle {
+  background: #0091fa;
+  color: #fff;
+}
+
+.fcf7b-ms-step.is-done .fcf7b-ms-step-num {
+  display: none;
+}
+
+.fcf7b-ms-step.is-done .fcf7b-ms-step-check {
+  display: block;
+}
+
+.fcf7b-ms-step-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #1e2126;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.fcf7b-ms-nav-buttons {
+  &,
+  p {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  button {
+    border: 1px solid #e3e5ea;
+    background: #fbfbfd;
+    color: #1e2126;
+    border-radius: 7px;
+    padding: 7px 14px;
+    font-size: 11.5px;
+    font-weight: 600;
+    cursor: pointer;
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+  }
+
+  .fcf7b-ms-next:not(:disabled) {
+    background: #0091fa;
+    border-color: #0091fa;
+    color: #fff;
+  }
+}

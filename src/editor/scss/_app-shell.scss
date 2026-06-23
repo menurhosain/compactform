@@ -1,0 +1,72 @@
+// --- App shell -------------------------------------------------------------
+.fcf7b-app {
+  background: var(--fcf7b-bg);
+  color: var(--fcf7b-text);
+  border: 1px solid var(--fcf7b-border);
+  border-radius: var(--fcf7b-radius);
+  overflow: hidden;
+  font-size: 13px;
+  line-height: 1.45;
+  margin-top: 6px;
+
+  &.fcf7-builder-theme-light {
+    @include theme-light;
+    @include field-tokens-light;
+    color-scheme: light;
+  }
+  &.fcf7-builder-theme-dark {
+    @include theme-dark;
+    @include field-tokens-dark;
+    color-scheme: dark;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  &.is-fullscreen {
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+
+    .fcf7b-toolbar {
+      flex: 0 0 auto;
+    }
+
+    .fcf7b-columns,
+    .fcf7b-code {
+      height: auto;
+      flex: 1 1 auto;
+      min-height: 0;
+    }
+  }
+}
+
+// --- Shared spinner --------------------------------------------------------
+.fcf7b-spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  border: 2px solid var(--fcf7b-border);
+  border-top-color: var(--fcf7b-accent);
+  border-radius: 50%;
+  animation: fcf7b-spin 0.7s linear infinite;
+}
+
+@keyframes fcf7b-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fcf7b-spinner {
+    animation-duration: 2s;
+  }
+}

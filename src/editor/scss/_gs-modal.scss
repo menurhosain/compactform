@@ -1,0 +1,121 @@
+.fcf7b-gs {
+  position: relative;
+
+  > .fcf7b-ghost.is-open,
+  > .fcf7b-ghost.is-set {
+    border-color: var(--fcf7b-accent);
+    color: var(--fcf7b-accent);
+  }
+
+  &-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 99;
+    background: rgba(15, 18, 26, 0.55);
+    backdrop-filter: blur(2px);
+  }
+
+  &-pop {
+    // Centred with `inset: 0; margin: auto`, NOT a translate — a transformed element becomes
+    // the containing block for its `position: fixed` descendants, which would trap the
+    // Templates lightbox inside this panel instead of over the viewport.
+    position: fixed;
+    inset: 0;
+    margin: auto;
+    z-index: 100;
+    width: 800px;
+    height: 800px;
+    max-width: 90vw;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid var(--fcf7b-border);
+    border-radius: 10px;
+    background: var(--fcf7b-panel);
+    box-shadow: var(--fcf7b-shadow);
+    text-align: left;
+  }
+
+  &-head {
+    position: relative;
+    flex: 0 0 auto;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--fcf7b-border);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--fcf7b-text);
+  }
+
+  &-close {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--fcf7b-muted);
+    font-size: 16px;
+    cursor: pointer;
+
+    &:hover {
+      background: var(--fcf7b-panel-2);
+      color: var(--fcf7b-text);
+    }
+  }
+
+  &-main {
+    flex: 1 1 auto;
+    display: flex;
+    min-height: 0;
+  }
+
+  &-sidebar {
+    flex: 0 0 220px;
+    overflow-y: auto;
+    padding: 12px;
+    border-right: 1px solid var(--fcf7b-border);
+    background: var(--fcf7b-panel-2);
+  }
+
+  &-navitem {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 8px 10px;
+    margin-bottom: 2px;
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--fcf7b-muted);
+    font-size: 13px;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+
+    i {
+      font-size: 15px;
+    }
+
+    &:hover {
+      background: var(--fcf7b-panel);
+      color: var(--fcf7b-text);
+    }
+
+    &.active {
+      background: var(--fcf7b-accent);
+      color: #fff;
+    }
+  }
+
+  &-body {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    padding: 20px;
+  }
+}
