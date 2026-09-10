@@ -36,10 +36,6 @@ class Webhook {
 
 	private const VALUE_SEPARATOR = ', ';
 
-	private const UPLOAD_SUBDIR = 'compactform/files';
-
-	private array $persisted = [];
-
 	public function __construct() {
 		add_action('wpcf7_before_send_mail', [ $this, 'maybe_send' ], 10, 3);
 	}
@@ -130,14 +126,12 @@ class Webhook {
 			return;
 		}
 
-		$posted          = (array) $submission->get_posted_data();
-		$meta            = $this->special_mail_tags();
-		$this->persisted = [];
+		$posted = (array) $submission->get_posted_data();
+		$meta   = $this->special_mail_tags();
 
 		$payload = $this->build_payload(
 			$settings,
 			$posted,
-			(array) $submission->uploaded_files(),
 			$meta,
 			$this->skip_fields( $contact_form ),
 			$form_id
@@ -220,7 +214,7 @@ class Webhook {
 	/**
 	 * The flat key => string payload.
 	 */
-	private function build_payload( array $settings, array $posted, array $uploaded_files, array $meta, array $skip, int $form_id ): array {
+	private function build_payload( array $settings, array $posted, array $meta, array $skip, int $form_id ): array {
 		if ( 'mapped' === $settings['bodyMode'] ) {
 			$payload = [];
 
@@ -231,7 +225,7 @@ class Webhook {
 
 				$values = [];
 				foreach ( $row['sources'] as $source ) {
-					$value = $this->resolve( $source, $posted, $uploaded_files, $meta );
+					$value = $this->resolve( $source, $posted, $meta );
 
 					if ( '' !== $value ) {
 						$values[] = $value;
@@ -257,7 +251,7 @@ class Webhook {
 				|| in_array( $key, $skip, true ) || isset( $duplicate[ $key ] ) ) {
 				continue;
 			}
-			$payload[ $key ] = $this->flatten( $key, $value, $uploaded_files );
+			$payload[ $key ] = $this->flatten( $value );
 		}
 
 		if ( $settings['meta'] ) {
@@ -268,7 +262,7 @@ class Webhook {
 	}
 
 	/** One mapped row's value: a special mail tag, or a posted field. */
-	private function resolve( string $source, array $posted, array $uploaded_files, array $meta ): string {
+	private function resolve( string $source, array $posted, array $meta ): string {
 		if ( 0 === strpos( $source, self::META_PREFIX ) ) {
 			$key = substr( $source, strlen( self::META_PREFIX ) );
 
@@ -283,21 +277,14 @@ class Webhook {
 			return '';
 		}
 
-		return $this->flatten( $key, $posted[ $key ], $uploaded_files );
+		return $this->flatten( $posted[ $key ] );
 	}
 
 	/**
-	 * A posted value as a single string.
+	 * A posted value as a single string. An uploaded file's posted value is
+	 * its original filename(s) — the file itself is never persisted or sent.
 	 */
-	private function flatten( string $key, $value, array $uploaded_files ): string {
-		if ( isset( $uploaded_files[ $key ] ) ) {
-			if ( ! isset( $this->persisted[ $key ] ) ) {
-				$this->persisted[ $key ] = $this->persist_uploads( (array) $uploaded_files[ $key ] );
-			}
-
-			return implode( self::VALUE_SEPARATOR, $this->persisted[ $key ] );
-		}
-
+	private function flatten( $value ): string {
 		if ( \CompactForm\Helpers\Utils::is_row_list( $value ) ) {
 			return \CompactForm\Helpers\Utils::rows_to_string( $value, self::VALUE_SEPARATOR );
 		}
@@ -307,37 +294,6 @@ class Webhook {
 		}
 
 		return is_scalar( $value ) ? (string) $value : '';
-	}
-
-	private function persist_uploads( array $paths ): array {
-		$uploads = wp_get_upload_dir();
-
-		if ( ! empty( $uploads['error'] ) ) {
-			return [];
-		}
-
-		$dir = trailingslashit( $uploads['basedir'] ) . self::UPLOAD_SUBDIR;
-
-		if ( ! wp_mkdir_p( $dir ) ) {
-			return [];
-		}
-
-		$urls = [];
-
-		foreach ( $paths as $path ) {
-			if ( ! is_string( $path ) || ! is_readable( $path ) ) {
-				continue;
-			}
-
-			$name = wp_generate_password( 12, false ) . '-' . wp_basename( $path );
-			$file = wp_unique_filename( $dir, $name );
-
-			if ( copy( $path, trailingslashit( $dir ) . $file ) ) {
-				$urls[] = trailingslashit( $uploads['baseurl'] ) . self::UPLOAD_SUBDIR . '/' . rawurlencode( $file );
-			}
-		}
-
-		return $urls;
 	}
 
 	private function build_headers( array $settings, array $posted, array $meta ): array {
@@ -355,7 +311,7 @@ class Webhook {
 			}
 
 			$value = 'field' === $row['mode']
-				? $this->resolve( $row['value'], $posted, [], $meta )
+				? $this->resolve( $row['value'], $posted, $meta )
 				: $row['value'];
 
 			$headers[ $name ] = trim( str_replace( [ "\r", "\n" ], '', $value ) );
