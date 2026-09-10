@@ -34,9 +34,9 @@ function compactform_delete_css_cache(): void {
 }
 
 if (is_multisite()) {
-	$site_ids = get_sites(['fields' => 'ids']);
+	$com_site_ids = get_sites(['fields' => 'ids']);
 
-	foreach ($site_ids as $site_id) {
+	foreach ($com_site_ids as $site_id) {
 		switch_to_blog($site_id);
 		compactform_delete_css_cache();
 		restore_current_blog();
