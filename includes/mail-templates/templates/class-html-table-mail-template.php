@@ -68,18 +68,6 @@ class Html_Table_Mail_Template extends Base_Mail_Template {
 		// Email clients don't support <link rel="stylesheet">, so a <style> block (or inline
 		// style="" attributes, both used here) is the only way to style an email at all.
 		$out = [
-			'<style>',
-			$ind(1) . '@media only screen and (max-width:480px) {',
-			$ind(2) . '.fcf7-wrap { padding:20px 12px !important; }',
-			$ind(2) . '.fcf7-card { border-radius:8px !important; }',
-			$ind(2) . '.fcf7-header { padding:20px !important; border-radius:8px 8px 0 0 !important; }',
-			$ind(2) . '.fcf7-title { font-size:18px !important; }',
-			$ind(2) . '.fcf7-body { padding:4px 20px 16px !important; }',
-			$ind(2) . '.fcf7-footer { padding:14px 20px !important; border-radius:0 0 8px 8px !important; }',
-			$ind(2) . '.fcf7-label { padding:14px 0 4px !important; font-size:10px !important; }',
-			$ind(2) . '.fcf7-value { padding:0 0 12px !important; font-size:14px !important; }',
-			$ind(1) . '}',
-			'</style>',
 			'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:' . self::CANVAS . ';">',
 			$ind(1) . '<tr>',
 			$ind(2) . '<td class="fcf7-wrap" align="center" style="padding:32px 16px;">',
