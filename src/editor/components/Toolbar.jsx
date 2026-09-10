@@ -1,7 +1,6 @@
 import { __, _n, sprintf } from '@wordpress/i18n';
 import GlobalSettings from './GlobalSettings';
 import CanvasBackground from './CanvasBackground';
-import TemplatesModal from './TemplatesModal';
 
 export default function Toolbar( {
 	view,
@@ -36,7 +35,6 @@ export default function Toolbar( {
 	exportForm,
 	onImportFile,
 	importInput,
-	importSchema,
 	canvasBg,
 	setCanvasBg,
 	theme,
@@ -98,8 +96,6 @@ export default function Toolbar( {
 					</div>
 
 					<div className="fcf7b-tb-group">
-						<TemplatesModal onImport={ importSchema } />
-
 						<button
 							type="button"
 							className={ `fcf7b-ghost${ navOpen ? ' is-set' : '' }` }

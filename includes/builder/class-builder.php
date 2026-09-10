@@ -51,8 +51,6 @@ class Builder {
 		// helpers and Form_Compiler, all lazily via the autoloader above).
 		Fields_Manager::instance();
 
-		Templates::instance();
-
 		add_action('wp_ajax_fcf7_builder_render', [ $this, 'ajax_render' ]);
 	}
 

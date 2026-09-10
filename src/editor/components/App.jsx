@@ -67,7 +67,7 @@ export default function App(props) {
     undo: history.undo,
     redo: history.redo,
   });
-  const { exportForm, onImportFile, importInput, importSchema } = useImportExport(
+  const { exportForm, onImportFile, importInput } = useImportExport(
     schema,
     setSchema,
     baseActions.select,
@@ -188,7 +188,6 @@ export default function App(props) {
         exportForm={exportForm}
         onImportFile={onImportFile}
         importInput={importInput}
-        importSchema={importSchema}
         canvasBg={canvasBg}
         setCanvasBg={setCanvasBg}
         theme={theme}

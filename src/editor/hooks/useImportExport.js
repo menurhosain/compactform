@@ -41,8 +41,6 @@ export default function useImportExport( schema, setSchema, selectField ) {
 		window.URL.revokeObjectURL( url );
 	};
 
-	// Also the template library's apply path — everything after "we have a parsed export"
-	// is identical, and a template IS an export (same `exportForm` payload shape).
 	const importSchema = ( parsed ) => {
 		if ( ! parsed || ! Array.isArray( parsed.fields ) ) {
 			window.alert( __( 'Could not import: not a CompactForm export.', 'compactform' ) );
