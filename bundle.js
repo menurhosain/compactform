@@ -39,6 +39,7 @@ const EXCLUDE = [
   "gulpfile.js",
   "src",
   "notes.md",
+  "README.md",
   ".php-cs-fixer.dist.php",
   ".php-cs-fixer.cache",
   "skills-lock.json",
