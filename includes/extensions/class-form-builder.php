@@ -145,7 +145,7 @@ class Form_Builder
             <div class="fcf7b-glimpse" aria-hidden="true">
                 <div class="fcf7b-glimpse-toolbar"><span></span><span></span><span></span><span></span></div>
                 <div class="fcf7b-glimpse-body">
-                    <div class="fcf7b-glimpse-fields"><?php echo str_repeat('<i></i>', 8); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- hardcoded literal markup, no dynamic input; esc_html() would print the tags as visible text instead of rendering them. ?></div>
+                    <div class="fcf7b-glimpse-fields"><?php echo str_repeat('<i></i>', 8); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- hardcoded literal markup, no dynamic input; esc_html() would print the tags as visible text instead of rendering them.?></div>
                     <div class="fcf7b-glimpse-canvas">
                         <div><b></b><u></u></div>
                         <div class="fcf7b-glimpse-row">
@@ -170,7 +170,7 @@ class Form_Builder
                     <?php esc_html_e('Edit with Builder', 'compactform'); ?>
                 </button>
             <?php else : ?>
-                <a class="button button-primary" href="<?php echo $new_form_url; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- already esc_url()'d at assignment above. ?>">
+                <a class="button button-primary" href="<?php echo $new_form_url; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- already esc_url()'d at assignment above.?>">
                     <?php esc_html_e('Edit with Builder', 'compactform'); ?>
                 </a>
             <?php endif; ?>
@@ -473,14 +473,10 @@ class Form_Builder
             wp_enqueue_style('fcf7b-common');
             $css = $this->get_form_css($form_id);
             if ('' !== $css) {
-                // wp_add_inline_style(), not a hand-rolled <style> tag — prints via the normal
-                // style queue (wp_head, or the wp_footer catch-all in CF7_Init for a form
-                // rendered too late for wp_head), same handle name enqueue_form_style() uses so
-                // wp_style_is() in get_form_css() still recognizes it as already handled.
                 $handle = 'fcf7b-form-' . $form_id;
                 wp_register_style($handle, false, [ 'fcf7b-common' ], FCF7_VERSION);
                 wp_enqueue_style($handle);
-                wp_add_inline_style($handle, $css);
+                wp_add_inline_style($handle, wp_strip_all_tags($css));
             }
         }
 
@@ -924,7 +920,7 @@ class Form_Builder
         if ('' !== $inline) {
             wp_register_style($handle, false, $deps, FCF7_VERSION);
             wp_enqueue_style($handle);
-            wp_add_inline_style($handle, $inline);
+            wp_add_inline_style($handle, wp_strip_all_tags($inline));
         }
     }
 
@@ -1024,7 +1020,7 @@ class Form_Builder
                 $devices = array_merge([ 'desktop' ], array_keys($breaks));
 
                 foreach ($targets as $sel => $template) {
-                    $selector = str_replace( '{{WRAPPER}}', $wrapper, (string) $sel );
+                    $selector = str_replace('{{WRAPPER}}', $wrapper, (string) $sel);
 
                     $by_device = $control->get_css_devices($field[ $key ], (string) $template, $devices);
 
@@ -1060,7 +1056,7 @@ class Form_Builder
             'containerRowGap'    => [ '[data-wpcf7-id="' . $form_id . '"] .fcf7-container', 'row-gap', 120 ],
         ];
 
-        foreach ($globals as $key => list($selector, $prop, $max)) {
+        foreach ($globals as $key => [$selector, $prop, $max]) {
             if (! isset($schema[ $key ])) {
                 continue;
             }
