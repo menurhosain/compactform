@@ -486,16 +486,16 @@ class Signature_Field extends Extension_Field {
 		ob_start();
 		?>
 		<span class="wpcf7-form-control-wrap <?php echo esc_attr( $tag->name ); ?>" data-name="<?php echo esc_attr( $tag->name ); ?>">
-			<span <?php echo wpcf7_format_atts( $wrap_atts ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- wpcf7_format_atts() already escapes attribute values; re-escaping breaks the output. ?>>
+			<span <?php echo wp_kses( wpcf7_format_atts( $wrap_atts ), array() ); ?>>
 				<span class="fcf7-signature-pad" data-field="<?php echo esc_attr( $tag->name ); ?>" data-bg-color="<?php echo esc_attr( $bg_color ); ?>" data-pen-color="<?php echo esc_attr( $pen_color ); ?>">
 					<canvas></canvas>
 				</span>
 				<span class="fcf7-signature-actions">
 					<button type="button" class="fcf7-signature-clear"><?php echo esc_html( $clear_text ); ?></button>
 				</span>
-				<input hidden <?php echo wpcf7_format_atts( $file_atts ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- wpcf7_format_atts() already escapes attribute values; re-escaping breaks the output. ?> />
+				<input hidden <?php echo wp_kses( wpcf7_format_atts( $file_atts ), array() ); ?> />
 			</span>
-			<?php echo $validation_error; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- wpcf7_get_validation_error() already returns escaped HTML markup; re-escaping breaks the output. ?>
+			<?php echo wp_kses( $validation_error, array( 'span' => array( 'class' => true, 'aria-hidden' => true ) ) ); ?>
 		</span>
 		<?php
 

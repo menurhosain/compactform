@@ -62,7 +62,11 @@ class Container
             } elseif ($form_part === '[/fcf7_container]') {
                 echo '</div>';
             } else {
-                echo $form_part; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- form-editor-authored HTML/CF7 tags, same trust level CF7 core renders unescaped; esc_html() would corrupt the markup and shortcode tags.
+                // wp_kses_post(), not esc_html(): $form_part is form-editor-authored HTML mixed
+                // with CF7 shortcode tags (e.g. "[text* your-name]") — square brackets pass
+                // through kses untouched, so this only strips disallowed HTML while keeping the
+                // shortcode tags CF7 will expand later.
+                echo wp_kses_post( $form_part );
             }
         }
 

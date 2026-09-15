@@ -717,7 +717,7 @@ class Range_Slider_Field extends Extension_Field {
 		ob_start();
 		?>
 		<span class="wpcf7-form-control-wrap <?php echo esc_attr( $tag->name ); ?>" data-name="<?php echo esc_attr( $tag->name ); ?>">
-			<span <?php echo wpcf7_format_atts( $atts ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- wpcf7_format_atts() already escapes attribute values; re-escaping breaks the output. ?>>
+			<span <?php echo wp_kses( wpcf7_format_atts( $atts ), array() ); ?>>
 				<?php if ( 'on' === $s['show_value'] && $readout_before ) : ?>
 					<?php $this->readout( $s, $from, $to ); ?>
 				<?php endif; ?>
@@ -768,7 +768,7 @@ class Range_Slider_Field extends Extension_Field {
 					<?php $this->readout( $s, $from, $to ); ?>
 				<?php endif; ?>
 			</span>
-			<?php echo $validation_error; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- wpcf7_get_validation_error() already returns escaped HTML markup; re-escaping breaks the output. ?>
+			<?php echo wp_kses( $validation_error, array( 'span' => array( 'class' => true, 'aria-hidden' => true ) ) ); ?>
 		</span>
 		<?php
 

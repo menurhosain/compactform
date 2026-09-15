@@ -138,14 +138,14 @@ class Form_Builder
 
     protected function render_optin(int $form_id): void
     {
-        $new_form_url = esc_url(add_query_arg('fcf7-builder', '1'));
+        $new_form_url = add_query_arg('fcf7-builder', '1');
         $nonce        = wp_create_nonce('fcf7_builder_enable');
         ?>
         <div class="fcf7b-optin-stage">
             <div class="fcf7b-glimpse" aria-hidden="true">
                 <div class="fcf7b-glimpse-toolbar"><span></span><span></span><span></span><span></span></div>
                 <div class="fcf7b-glimpse-body">
-                    <div class="fcf7b-glimpse-fields"><?php echo str_repeat('<i></i>', 8); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- hardcoded literal markup, no dynamic input; esc_html() would print the tags as visible text instead of rendering them.?></div>
+                    <div class="fcf7b-glimpse-fields"><?php echo wp_kses( str_repeat('<i></i>', 8), [ 'i' => [] ] ); ?></div>
                     <div class="fcf7b-glimpse-canvas">
                         <div><b></b><u></u></div>
                         <div class="fcf7b-glimpse-row">
@@ -170,7 +170,7 @@ class Form_Builder
                     <?php esc_html_e('Edit with Builder', 'compactform'); ?>
                 </button>
             <?php else : ?>
-                <a class="button button-primary" href="<?php echo $new_form_url; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- already esc_url()'d at assignment above.?>">
+                <a class="button button-primary" href="<?php echo esc_url( $new_form_url ); ?>">
                     <?php esc_html_e('Edit with Builder', 'compactform'); ?>
                 </a>
             <?php endif; ?>

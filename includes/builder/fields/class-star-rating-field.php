@@ -77,7 +77,7 @@ class Star_Rating_Field extends Extension_Field {
 		?>
 
 		<span data-name="<?php echo esc_attr( $tag->name ); ?>" class="wpcf7-form-control-wrap <?php echo esc_attr( $tag->name ); ?>">
-			<span <?php echo $atts; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- wpcf7_format_atts() already escapes attribute values; re-escaping breaks the output. ?>>
+			<span <?php echo wp_kses( $atts, array() ); ?>>
 				<label>
 					<input type="text" class="fcf7-rating-input" name="<?php echo esc_attr( $tag->name ); ?>" value="<?php echo esc_attr( $selected ); ?>"/>
 					<span class="icon">
@@ -90,7 +90,7 @@ class Star_Rating_Field extends Extension_Field {
 				</label>
 			</span>
 		</span>
-		<span><?php echo $validation_error; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- wpcf7_get_validation_error() already returns escaped HTML markup; re-escaping breaks the output. ?></span>
+		<span><?php echo wp_kses( $validation_error, array( 'span' => array( 'class' => true, 'aria-hidden' => true ) ) ); ?></span>
 		<?php
 
 		$output = ob_get_clean();

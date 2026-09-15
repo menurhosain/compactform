@@ -155,13 +155,13 @@ class Country_Dropdown_Field extends Extension_Field {
 		if ( $dynamic ) {
 			?>
 			<span class="<?php echo esc_attr( $wrap_class ); ?>" data-name="<?php echo esc_attr( $name ); ?>">
-				<span class="fcf7-country-dynamic" data-name="<?php echo esc_attr( $name ); ?>"<?php echo $data_attr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built from already-escaped fragments above; re-escaping breaks the attribute markup. ?>>
+				<span class="fcf7-country-dynamic" data-name="<?php echo esc_attr( $name ); ?>"<?php echo wp_kses( $data_attr, array() ); ?>>
 					<input type="text" class="fcf7-cd-country-flag" />
 					<select class="fcf7-cd-state" disabled></select>
 					<input type="text" class="fcf7-cd-city wpcf7-form-control wpcf7-text" placeholder="<?php esc_attr_e( 'City', 'compactform' ); ?>" disabled />
 					<input type="hidden" name="<?php echo esc_attr( $name ); ?>" class="fcf7-cd-value" value="" />
 				</span>
-				<span class="wpcf7-not-valid-tip-wrap"><?php echo $validation_error; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- wpcf7_get_validation_error() already returns escaped HTML markup; re-escaping breaks the output. ?></span>
+				<span class="wpcf7-not-valid-tip-wrap"><?php echo wp_kses( $validation_error, array( 'span' => array( 'class' => true, 'aria-hidden' => true ) ) ); ?></span>
 			</span>
 			<?php
 		} else {
@@ -194,8 +194,8 @@ class Country_Dropdown_Field extends Extension_Field {
 			}
 			?>
 			<span class="<?php echo esc_attr( $wrap_class ); ?>" data-name="<?php echo esc_attr( $name ); ?>">
-				<input <?php echo wpcf7_format_atts( $atts ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- wpcf7_format_atts() already escapes attribute values; re-escaping breaks the output. ?> />
-				<span class="wpcf7-not-valid-tip-wrap"><?php echo $validation_error; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- wpcf7_get_validation_error() already returns escaped HTML markup; re-escaping breaks the output. ?></span>
+				<input <?php echo wp_kses( wpcf7_format_atts( $atts ), array() ); ?> />
+				<span class="wpcf7-not-valid-tip-wrap"><?php echo wp_kses( $validation_error, array( 'span' => array( 'class' => true, 'aria-hidden' => true ) ) ); ?></span>
 			</span>
 			<?php
 		}

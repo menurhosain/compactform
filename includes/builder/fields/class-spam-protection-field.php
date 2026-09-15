@@ -287,7 +287,7 @@ class Spam_Protection_Field extends Extension_Field {
 		ob_start();
 		?>
 		<span class="wpcf7-form-control-wrap <?php echo esc_attr( $tag->name ); ?>" data-name="<?php echo esc_attr( $tag->name ); ?>">
-			<span <?php echo wpcf7_format_atts( $wrap_atts ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- wpcf7_format_atts() already escapes attribute values; re-escaping breaks the output. ?>>
+			<span <?php echo wp_kses( wpcf7_format_atts( $wrap_atts ), array() ); ?>>
 				<span class="fcf7-sp-challenge">
 					<?php if ( 'canvas' === $method ) : ?>
 						<canvas class="fcf7-sp-canvas" width="<?php echo esc_attr( (string) $width ); ?>" height="<?php echo esc_attr( (string) $height ); ?>" role="img" aria-label="<?php esc_attr_e( 'Arithmetic verification image', 'compactform' ); ?>" data-image="<?php echo esc_attr( $image ); ?>"></canvas>
@@ -305,10 +305,10 @@ class Spam_Protection_Field extends Extension_Field {
 					<?php endif; ?>
 				</span>
 
-				<input <?php echo wpcf7_format_atts( $input_atts ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- wpcf7_format_atts() already escapes attribute values; re-escaping breaks the output. ?> />
+				<input <?php echo wp_kses( wpcf7_format_atts( $input_atts ), array() ); ?> />
 				<input type="hidden" name="<?php echo esc_attr( $tag->name ); ?>_token" class="fcf7-sp-token" value="<?php echo esc_attr( $token ); ?>" />
 			</span>
-			<?php echo $validation_error; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- wpcf7_get_validation_error() already returns escaped HTML markup; re-escaping breaks the output. ?>
+			<?php echo wp_kses( $validation_error, array( 'span' => array( 'class' => true, 'aria-hidden' => true ) ) ); ?>
 		</span>
 		<?php
 
