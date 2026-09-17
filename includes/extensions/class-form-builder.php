@@ -1388,8 +1388,10 @@ class Form_Builder
         }
 
         // Same nonce CF7 core's own admin.php already checks before firing wpcf7_save_contact_form;
-        // re-verified here so this value is never read without a local check.
-        check_admin_referer('wpcf7-save-contact-form_' . $contact_form->id());
+        // re-verified here so this value is never read without a local check. Must use the same
+        // pre-save $_POST['post_ID'] CF7 itself used to build the nonce action ('-1' for a new,
+        // not-yet-saved form) — $contact_form->id() is the post-save id and won't match for new forms.
+        check_admin_referer('wpcf7-save-contact-form_' . wpcf7_superglobal_post('post_ID', '-1'));
 
         $schema = json_decode(\CompactForm\Helpers\Utils::raw_post('fcf7-builder-schema'), true);
         if (! is_array($schema) || empty($schema['fields'])) {
