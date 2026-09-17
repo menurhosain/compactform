@@ -1438,6 +1438,8 @@ class Form_Builder
             return;
         }
 
+        check_admin_referer('wpcf7-save-contact-form_' . wpcf7_superglobal_post('post_ID', '-1'));
+
         $raw    = \CompactForm\Helpers\Utils::raw_post('fcf7-builder-schema');
         $schema = json_decode($raw, true);
         if (! is_array($schema)) {
