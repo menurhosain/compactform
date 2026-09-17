@@ -4,6 +4,7 @@ namespace CompactForm\Builder\Fields;
 
 use CompactForm\Builder\Controls_Manager;
 use CompactForm\Builder\Abstracts\Extension_Field;
+use CompactForm\Helpers\Utils;
 use CompactForm\Builder\Abstracts\Traits\Label_Control;
 use CompactForm\Builder\Abstracts\Traits\Name_Control;
 use CompactForm\Builder\Abstracts\Traits\Required_Control;
@@ -520,10 +521,7 @@ class Signature_Field extends Extension_Field {
 			return $result;
 		}
 
-		// This fires on CF7's wpcf7_validate_{tag} filter, dispatched only after CF7 core has
-		// already verified the submission's nonce; no separate nonce check belongs here.
-		// $file is only used for a presence/emptiness check below, never output or stored.
-		$file     = $_FILES[ $tag->name ] ?? null; // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		$file     = Utils::superglobal_files( $tag->name );
 		$has_file = ! empty( $file['name'] ) && ( ! isset( $file['error'] ) || UPLOAD_ERR_NO_FILE !== $file['error'] );
 
 		if ( ! $has_file ) {

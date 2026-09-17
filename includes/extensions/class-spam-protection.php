@@ -220,9 +220,7 @@ class Spam_Protection {
 	}
 
 	private function filled_too_fast(int $form_id, int $seconds): bool {
-		// Called from refuse_submission(), hooked on wpcf7_before_send_mail — fires only after
-		// CF7 core has already processed and validated the whole submission's nonce.
-		$raw = isset($_POST[ self::TIMESTAMP_FIELD ]) ? sanitize_text_field(wp_unslash($_POST[ self::TIMESTAMP_FIELD ])) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		$raw = sanitize_text_field(wpcf7_superglobal_post(self::TIMESTAMP_FIELD));
 		$parts = explode('|', $raw);
 
 		if (2 !== count($parts) || ! ctype_digit($parts[0])) {
@@ -287,10 +285,7 @@ class Spam_Protection {
 	private function honeypot_tripped(int $form_id): bool {
 		$name = $this->honeypot_name($form_id);
 
-		// Called from refuse_submission(), hooked on wpcf7_before_send_mail — fires only after
-		// CF7 core has already processed and validated the whole submission's nonce. Value is
-		// only ever used for this boolean presence/emptiness check, never as data.
-		return isset($_POST[ $name ]) && '' !== trim((string) wp_unslash($_POST[ $name ])); // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		return '' !== trim((string) wpcf7_superglobal_post($name));
 	}
 
 	/**

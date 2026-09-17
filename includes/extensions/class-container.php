@@ -33,11 +33,9 @@ class Container
 
     private static function is_cf7_admin_editor()
     {
-        // Read-only page-context check (which admin screen this is), not submitted/processed
-        // data — nothing is mutated here, so there's no CSRF surface a nonce would protect.
         return is_admin()
             && ! (defined('DOING_AJAX') && DOING_AJAX)
-            && isset($_GET['page']) && 'wpcf7' === sanitize_text_field(wp_unslash($_GET['page'])); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+            && 'wpcf7' === sanitize_text_field(wpcf7_superglobal_get('page'));
     }
 
     public function fcf7_container_properties($properties, $cfform)

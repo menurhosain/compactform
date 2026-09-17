@@ -954,9 +954,7 @@ class Range_Slider_Field extends Extension_Field {
 
 	public function validate_range( $result, $tag ) {
 		$s = $this->settings( $tag );
-		// This fires on CF7's wpcf7_validate_{tag} filter, dispatched only after CF7 core has
-		// already verified the submission's nonce; no separate nonce check belongs here.
-		$value = isset( $_POST[ $tag->name ] ) ? trim( sanitize_text_field( wp_unslash( $_POST[ $tag->name ] ) ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		$value = trim( sanitize_text_field( wpcf7_superglobal_post( $tag->name ) ) );
 
 		if ( '' === $value ) {
 			if ( $tag->is_required() ) {

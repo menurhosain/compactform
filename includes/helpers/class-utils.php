@@ -10,6 +10,20 @@ class Utils {
 		return defined( 'FCF7_PRO_VERSION' ) && class_exists( 'FlexiForms_Pro' );
 	}
 
+	// Single choke point for raw (pre-sanitize) $_POST reads. Only wp_unslash()'d, nothing else —
+	// callers here decode a raw JSON payload (sanitize_text_field() would corrupt the JSON
+	// structure) and sanitize the decoded result themselves before use.
+	public static function raw_post( string $key, string $default = '' ): string {
+		return wp_unslash( $_POST[ $key ] ?? $default ); // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+	}
+
+	// Single choke point for $_FILES reads; callers are CF7 field-validation callbacks that run
+	// before CF7's own (opt-in, logged-in-only) nonce check, and only ever use the raw value for
+	// a presence/emptiness check — never storing or outputting it.
+	public static function superglobal_files( string $key ) {
+		return $_FILES[ $key ] ?? null; // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+	}
+
 	public static function repeater_duplicate_keys( int $form_id ): array {
 		return (array) apply_filters( 'fcf7_repeater_duplicate_keys', [], $form_id );
 	}

@@ -168,9 +168,7 @@ class Builder {
 			wp_send_json_error([ 'message' => __('Permission denied.', 'compactform') ], 403);
 		}
 
-		// Raw JSON payload, not plain text — sanitize_text_field() would corrupt the JSON structure.
-		// Sanitized 2 lines below via Fields_Manager::sanitize_schema(), after decode.
-		$schema = json_decode(wp_unslash(isset($_POST['schema']) ? $_POST['schema'] : ''), true); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		$schema = json_decode(\CompactForm\Helpers\Utils::raw_post('schema'), true);
 		if (! is_array($schema)) {
 			$schema = [ 'fields' => [] ];
 		}

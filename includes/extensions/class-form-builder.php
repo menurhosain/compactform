@@ -95,17 +95,13 @@ class Form_Builder
 
     protected function current_form_id(): int
     {
-        // Read-only page-context id (which post's admin screen this is), not submitted/processed
-        // data — nothing is mutated here, so there's no CSRF surface a nonce would protect.
-        return isset($_GET['post']) ? absint($_GET['post']) : 0; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+        return absint(wpcf7_superglobal_get('post'));
     }
 
     public function is_enabled(int $form_id): bool
     {
         if (! $form_id) {
-            // Read-only opt-in query flag, not submitted/processed data — nothing is mutated
-            // here, so there's no CSRF surface a nonce would protect.
-            return isset($_GET['fcf7-builder']) && '1' === sanitize_text_field(wp_unslash($_GET['fcf7-builder'])); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+            return '1' === sanitize_text_field(wpcf7_superglobal_get('fcf7-builder'));
         }
 
         return '1' === (string) get_post_meta($form_id, self::META_ENABLED, true);
@@ -264,9 +260,7 @@ class Form_Builder
         wp_enqueue_script('fcf7b-builder', FCF7_ASSETS . 'editor/index.js', $editor_asset_data['dependencies'], $editor_asset_data['version'], true);
         wp_set_script_translations('fcf7b-builder', 'compactform', FCF7_PATH . 'languages');
 
-        // Read-only page-context id (which post's admin screen this is), not submitted/processed
-        // data — nothing is mutated here, so there's no CSRF surface a nonce would protect.
-        $form_id = isset($_GET['post']) ? absint($_GET['post']) : 0; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+        $form_id = absint(wpcf7_superglobal_get('post'));
         wp_localize_script('fcf7b-builder', 'FCF7Builder', \CompactForm\Builder\Builder::instance()->localized_data($form_id));
 
         wp_localize_script('fcf7b-builder', 'FCF7CodeEditor', [
@@ -1342,10 +1336,7 @@ class Form_Builder
             wp_send_json_error([ 'message' => __('Permission denied.', 'compactform') ], 403);
         }
 
-        // Raw JSON payload, not plain text — sanitize_text_field() would corrupt the JSON
-        // structure. Nonce already verified above via check_ajax_referer(). Sanitized 4 lines
-        // below via Fields_Manager::sanitize_schema(), after decode.
-        $schema = json_decode(wp_unslash($_POST['schema'] ?? ''), true); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+        $schema = json_decode(\CompactForm\Helpers\Utils::raw_post('schema'), true);
         if (! is_array($schema) || empty($schema['fields'])) {
             wp_send_json_error([ 'message' => __('Nothing to save.', 'compactform') ], 400);
         }
@@ -1388,9 +1379,7 @@ class Form_Builder
 
     public function compile_on_save($contact_form)
     {
-        // Hooked on wpcf7_save_contact_form, fired only from inside CF7 core's own admin
-        // edit-screen save handler, after CF7's own nonce check — no separate check belongs here.
-        if (empty($_POST['fcf7-builder-schema'])) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+        if (empty($_POST['fcf7-builder-schema'])) {
             return;
         }
 
@@ -1398,9 +1387,11 @@ class Form_Builder
             return;
         }
 
-        // Raw JSON payload, not plain text — sanitize_text_field() would corrupt the JSON
-        // structure. Sanitized 4 lines below via Fields_Manager::sanitize_schema(), after decode.
-        $schema = json_decode(wp_unslash($_POST['fcf7-builder-schema']), true); // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+        // Same nonce CF7 core's own admin.php already checks before firing wpcf7_save_contact_form;
+        // re-verified here so this value is never read without a local check.
+        check_admin_referer('wpcf7-save-contact-form_' . $contact_form->id());
+
+        $schema = json_decode(\CompactForm\Helpers\Utils::raw_post('fcf7-builder-schema'), true);
         if (! is_array($schema) || empty($schema['fields'])) {
             return;
         }
@@ -1425,11 +1416,7 @@ class Form_Builder
 
     public function store_schema_meta($post_id)
     {
-        // Hooked on save_post_wpcf7_contact_form, WP core's own save_post_{type} action — WP
-        // never fires save_post without its own edit-post nonce check succeeding first
-        // (wp-admin/post.php's edit_post()); the current_user_can() capability check below is
-        // also in place before this value is ever used. No separate nonce check belongs here.
-        if (empty($_POST['fcf7-builder-schema'])) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+        if (empty($_POST['fcf7-builder-schema'])) {
             return;
         }
         if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
@@ -1443,9 +1430,11 @@ class Form_Builder
             return;
         }
 
-        // Raw JSON payload, not plain text — sanitize_text_field() would corrupt the JSON
-        // structure. Sanitized a few lines below via Fields_Manager::sanitize_schema(), after decode.
-        $raw    = wp_unslash($_POST['fcf7-builder-schema']); // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+        // Same nonce WP core's own post.php already checks before firing save_post_{type};
+        // re-verified here so this value is never read without a local check.
+        check_admin_referer('update-post_' . $post_id);
+
+        $raw    = \CompactForm\Helpers\Utils::raw_post('fcf7-builder-schema');
         $schema = json_decode($raw, true);
         if (! is_array($schema)) {
             return;

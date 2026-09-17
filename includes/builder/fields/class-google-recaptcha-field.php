@@ -101,9 +101,7 @@ class Google_Recaptcha_Field extends Extension_Field {
 	public function validate_recaptcha_response( $result, $tag ) {
 		$error_message = $this->get_error_message( $tag );
 
-		// This fires on CF7's wpcf7_validate_{tag} filter, dispatched only after CF7 core has
-		// already verified the submission's nonce; no separate nonce check belongs here.
-		$token = isset( $_POST['g-recaptcha-response'] ) ? sanitize_text_field( wp_unslash( $_POST['g-recaptcha-response'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		$token = sanitize_text_field( wpcf7_superglobal_post( 'g-recaptcha-response' ) );
 
 		if ( '' === $token ) {
 			$result->invalidate( $tag, $error_message );

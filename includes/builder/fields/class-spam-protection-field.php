@@ -360,10 +360,8 @@ class Spam_Protection_Field extends Extension_Field {
 			$message = __( 'Your answer to the verification question is not correct.', 'compactform' );
 		}
 
-		// This fires on CF7's wpcf7_validate_{tag} filter, dispatched only after CF7 core has
-		// already verified the submission's nonce; no separate nonce check belongs here.
-		$answer = isset( $_POST[ $tag->name ] ) ? trim( sanitize_text_field( wp_unslash( $_POST[ $tag->name ] ) ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing
-		$token  = isset( $_POST[ $tag->name . '_token' ] ) ? sanitize_text_field( wp_unslash( $_POST[ $tag->name . '_token' ] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		$answer = trim( sanitize_text_field( wpcf7_superglobal_post( $tag->name ) ) );
+		$token  = sanitize_text_field( wpcf7_superglobal_post( $tag->name . '_token' ) );
 
 		if ( '' === $answer ) {
 			$result->invalidate( $tag, wpcf7_get_message( 'invalid_required' ) );

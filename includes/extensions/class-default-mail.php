@@ -89,9 +89,7 @@ class Default_Mail
             return;
         }
 
-        // Read-only page-context id (which post's admin screen this is), not submitted/processed
-        // data — nothing is mutated here, so there's no CSRF surface a nonce would protect.
-        $form_id = isset($_GET['post']) ? absint($_GET['post']) : 0; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+        $form_id = absint(wpcf7_superglobal_get('post'));
         if (! $form_id) {
             return;
         }
