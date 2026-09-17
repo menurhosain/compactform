@@ -1416,7 +1416,13 @@ class Form_Builder
 
     public function store_schema_meta($post_id)
     {
-        if (empty($_POST['fcf7-builder-schema'])) {
+        // CF7's contact-form editor is a custom admin page (admin.php?page=wpcf7), not WP
+        // core's wp-admin/post.php edit screen, so there is no update-post_{id} nonce in this
+        // request to check. Capability check below gates access; the actual submitted schema
+        // was already nonce-verified moments earlier in the same request, in compile_on_save()
+        // (hooked on wpcf7_save_contact_form, which CF7's own admin.php save routine only fires
+        // after its own check_admin_referer('wpcf7-save-contact-form_' . $id) succeeds).
+        if (empty(wpcf7_superglobal_post('fcf7-builder-schema'))) {
             return;
         }
         if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
@@ -1429,10 +1435,6 @@ class Form_Builder
         if (! current_user_can('wpcf7_edit_contact_form', $post_id)) {
             return;
         }
-
-        // Same nonce WP core's own post.php already checks before firing save_post_{type};
-        // re-verified here so this value is never read without a local check.
-        check_admin_referer('update-post_' . $post_id);
 
         $raw    = \CompactForm\Helpers\Utils::raw_post('fcf7-builder-schema');
         $schema = json_decode($raw, true);
