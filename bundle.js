@@ -31,13 +31,10 @@ const EXCLUDE = [
   ".git",
   ".gitignore",
   "Thumbs.db",
-  "package.json",
   "package-lock.json",
   "composer.json",
   "composer.lock",
   "bundle.js",
-  "gulpfile.js",
-  "src",
   "notes.md",
   "README.md",
   ".php-cs-fixer.dist.php",
@@ -51,7 +48,7 @@ const EXCLUDE = [
 ];
 
 // Matched by basename alone, at any depth (not just repo root).
-const EXCLUDE_ANYWHERE = [".php-cs-fixer.dist.php", ".php-cs-fixer.cache"];
+const EXCLUDE_ANYWHERE = [".php-cs-fixer.dist.php", ".php-cs-fixer.cache", ".DS_store"];
 
 function shouldExclude(filePath) {
   const normalized = filePath.replace(/\\/g, "/").replace(/^\.\//, "");

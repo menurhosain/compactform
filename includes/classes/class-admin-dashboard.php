@@ -13,7 +13,7 @@ class Admin_Dashboard {
 
 	const RECAPTCHA_SETTINGS_OPTION = 'fcf7_recaptcha_settings';
 
-	private string $hook_suffix = '';
+	private string $hook_suffix = 'toplevel_page_compactform';
 
 	public function __construct() {
 		add_action( 'admin_menu', [ $this, 'register_menu' ] );
@@ -38,6 +38,8 @@ class Admin_Dashboard {
 		if ( $hook !== $this->hook_suffix ) {
 			return;
 		}
+
+		var_dump($hook);
 
 		$asset_file = FCF7_PATH . 'assets/dashboard/index.asset.php';
 

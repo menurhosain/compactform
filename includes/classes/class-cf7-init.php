@@ -22,7 +22,7 @@ final class CF7_Init {
 		add_action( 'wp_enqueue_scripts', [ $this, 'register_vendor_assets' ], 5 );
 		add_action( 'admin_enqueue_scripts', [ $this, 'register_vendor_assets' ], 5 );
 		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_theme_css' ] );
-		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_theme_css' ] );
+		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_admin_theme_css' ] );
 		add_action( 'init', [ $this, 'load_extensions' ], 0 );
 		// Catch-all for styles enqueued too late for wp_head (a page builder rendering a form
 		// at wp_footer priority). WP_Styles::do_items() skips anything already printed, so this
@@ -77,6 +77,14 @@ final class CF7_Init {
 	}
 
 	public function enqueue_theme_css(): void {
+		wp_enqueue_style( 'fcf7-theme', FCF7_ASSETS . 'css/fcf7-theme.min.css', [], FCF7_VERSION );
+	}
+
+	public function enqueue_admin_theme_css($val): void {
+		if ( ! $val || 'toplevel_page_wpcf7' !== $val ) {
+			return;
+		}
+
 		wp_enqueue_style( 'fcf7-theme', FCF7_ASSETS . 'css/fcf7-theme.min.css', [], FCF7_VERSION );
 	}
 }
