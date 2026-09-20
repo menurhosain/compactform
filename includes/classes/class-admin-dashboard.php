@@ -39,8 +39,6 @@ class Admin_Dashboard {
 			return;
 		}
 
-		var_dump($hook);
-
 		$asset_file = FCF7_PATH . 'assets/dashboard/index.asset.php';
 
 		if ( ! file_exists( $asset_file ) ) {

@@ -80,8 +80,8 @@ final class CF7_Init {
 		wp_enqueue_style( 'fcf7-theme', FCF7_ASSETS . 'css/fcf7-theme.min.css', [], FCF7_VERSION );
 	}
 
-	public function enqueue_admin_theme_css($val): void {
-		if ( ! $val || 'toplevel_page_wpcf7' !== $val ) {
+	public function enqueue_admin_theme_css($hook): void {
+		if ( ! $hook || strpos($hook, "wpcf7") === false ) {
 			return;
 		}
 

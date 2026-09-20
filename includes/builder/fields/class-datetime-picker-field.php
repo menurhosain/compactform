@@ -139,7 +139,7 @@ class Datetime_Picker_Field extends Extension_Field {
 	}
 
 	protected function register_preview_script(): array {
-		wp_register_script( 'fcf7-datetime-picker', FCF7_ASSETS . 'js/datetime-picker.min.js', [ 'flatpickr', 'jquery' ], FCF7_VERSION, true );
+		wp_register_script( 'fcf7-datetime-picker', FCF7_ASSETS . 'js/datetime-picker.min.js', [ 'flatpickr' ], FCF7_VERSION, true );
 		return [ 'fcf7-datetime-picker' ];
 	}
 

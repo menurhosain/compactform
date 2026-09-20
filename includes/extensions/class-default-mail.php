@@ -85,9 +85,9 @@ class Default_Mail
 
     public function enqueue_admin_assets(string $hook): void
     {
-        if ('toplevel_page_wpcf7' !== $hook) {
-            return;
-        }
+		if ( ! $hook || strpos($hook, "wpcf7") === false ) {
+			return;
+		}
 
         $form_id = absint(wpcf7_superglobal_get('post'));
         if (! $form_id) {

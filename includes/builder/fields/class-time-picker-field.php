@@ -119,7 +119,7 @@ class Time_Picker_Field extends Extension_Field {
 	}
 
 	protected function register_preview_script(): array {
-		wp_register_script( 'fcf7-time-picker', FCF7_ASSETS . 'js/time-picker.min.js', [ 'flatpickr', 'jquery' ], FCF7_VERSION, true );
+		wp_register_script( 'fcf7-time-picker', FCF7_ASSETS . 'js/time-picker.min.js', [ 'flatpickr' ], FCF7_VERSION, true );
 		return [ 'fcf7-time-picker' ];
 	}
 

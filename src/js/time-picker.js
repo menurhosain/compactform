@@ -1,14 +1,13 @@
-(function ($) {
+(function () {
 	// CompactForm - Time Picker (flatpickr, time only)
 	function init(scope) {
-		$(scope || document).find(".fcf7-field-picker-wrapper input.fcf7-timepicker").each(function () {
-			var $this = $(this);
-			if ($this.data("fcf7-init")) {
+		(scope || document).querySelectorAll(".fcf7-field-picker-wrapper input.fcf7-timepicker").forEach(function (el) {
+			if (el.dataset.fcf7Init) {
 				return;
 			}
-			$this.data("fcf7-init", 1);
+			el.dataset.fcf7Init = "1";
 
-			var configStr = $this.attr("data-config");
+			var configStr = el.getAttribute("data-config");
 			var config = {};
 
 			if (configStr) {
@@ -21,7 +20,7 @@
 
 			var timeFormat = config.time_format || "H:i";
 
-			flatpickr($this[0], {
+			flatpickr(el, {
 				enableTime: true,
 				noCalendar: true,
 				dateFormat: timeFormat, // e.g. "H:i", "H:i:s" or "h:i K"
@@ -43,4 +42,4 @@
 	document.addEventListener("fcf7:repeater-row-added", function (e) {
 		init(e.detail.row);
 	});
-})(jQuery);
+})();

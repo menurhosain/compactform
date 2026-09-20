@@ -139,7 +139,7 @@ class Date_Picker_Field extends Extension_Field
 
 	protected function register_preview_script(): array
 	{
-		wp_register_script('fcf7-date-picker', FCF7_ASSETS . 'js/date-picker.min.js', ['flatpickr', 'jquery'], FCF7_VERSION, true);
+		wp_register_script('fcf7-date-picker', FCF7_ASSETS . 'js/date-picker.min.js', ['flatpickr'], FCF7_VERSION, true);
 		return ['fcf7-date-picker'];
 	}
 
